@@ -4,5 +4,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root to: "users#index"
+  namespace :admin do
+    resources :users
+  end
+
+  root to: "admin/users#index"
 end
