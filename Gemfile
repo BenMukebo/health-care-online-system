@@ -22,6 +22,8 @@ gem 'importmap-rails'
 
 gem 'administrate'
 
+gem 'devise'
+
 # Set up Bullet
 gem 'bullet', group: :development
 
