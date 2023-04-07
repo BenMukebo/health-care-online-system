@@ -22,5 +22,8 @@ class HospitalsController < ApplicationController
       render :new
     end
   end
+
+  def edit
+  end
   
 end
