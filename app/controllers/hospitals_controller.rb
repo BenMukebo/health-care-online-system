@@ -4,5 +4,10 @@ class HospitalsController < ApplicationController
   def index
     @hospitals = Hospital.all
   end
+
+  def show
+    @treatments = @hospital.treatments
+    @healthcare_requests = @hospital.healthcare_requests
+  end
   
 end
