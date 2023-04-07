@@ -14,4 +14,13 @@ class HospitalsController < ApplicationController
     @hospital = Hospital.new
   end
 
+  def create
+    @hospital = Hospital.new(hospital_params)
+    if @hospital.save
+      redirect_to @hospital, notice: 'Hospital was successfully created.'
+    else
+      render :new
+    end
+  end
+  
 end
