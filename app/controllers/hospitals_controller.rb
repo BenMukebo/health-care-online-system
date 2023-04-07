@@ -25,5 +25,13 @@ class HospitalsController < ApplicationController
 
   def edit
   end
+
+  def update
+    if @hospital.update(hospital_params)
+      redirect_to @hospital, notice: 'Hospital was successfully updated.'
+    else
+      render :edit
+    end
+  end
   
 end
