@@ -45,5 +45,7 @@ class HospitalsController < ApplicationController
   def set_hospital
     @hospital = Hospital.find(params[:id])
   end
-
+  def hospital_params
+    params.require(:hospital).permit(:name, :info, :address, :treatments_counter, :healthcare_requests_counter, :user_id)
+  end
 end
