@@ -9,5 +9,9 @@ class HospitalsController < ApplicationController
     @treatments = @hospital.treatments
     @healthcare_requests = @hospital.healthcare_requests
   end
-  
+
+  def new
+    @hospital = Hospital.new
+  end
+
 end
