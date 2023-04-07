@@ -33,5 +33,17 @@ class HospitalsController < ApplicationController
       render :edit
     end
   end
-  
+
+
+  def destroy
+    @hospital.destroy
+    redirect_to hospitals_url, notice: 'Hospital was successfully destroyed.'
+  end
+
+  private
+
+  def set_hospital
+    @hospital = Hospital.find(params[:id])
+  end
+
 end
