@@ -1,5 +1,5 @@
 class HospitalsController < ApplicationController
-  before_action :set_hospital, only: [:show, :edit, :update, :destroy]
+  before_action :set_hospital, only: %i[show edit update destroy]
 
   def index
     @hospitals = Hospital.all
@@ -23,8 +23,7 @@ class HospitalsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @hospital.update(hospital_params)
@@ -33,7 +32,6 @@ class HospitalsController < ApplicationController
       render :edit
     end
   end
-
 
   def destroy
     @hospital.destroy
@@ -45,7 +43,9 @@ class HospitalsController < ApplicationController
   def set_hospital
     @hospital = Hospital.find(params[:id])
   end
+
   def hospital_params
-    params.require(:hospital).permit(:name, :info, :address, :treatments_counter, :healthcare_requests_counter, :user_id)
+    params.require(:hospital).permit(:name, :info, :address, :treatments_counter, :healthcare_requests_counter,
+                                     :user_id)
   end
 end
