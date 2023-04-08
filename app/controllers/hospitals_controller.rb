@@ -21,5 +21,12 @@ def create
   end
 end
 
+def edit
+  @hospital = Hospital.find(params[:id])
+end
+
+
+end
+
 
 end
