@@ -35,6 +35,18 @@ else
  end
 end
 
+def destroy
+  @hospital = Hospital.find(params[:id])
+  @hospital.destroy
+
+  redirect_to hospitals_path
+end
+
+private
+
+def hospital_params
+  params.require(:hospital).permit(:name, :treatments_counter, :healthcare_requests_counter, :data, :address, :status, :user_id)
+end
 end
 end
 
