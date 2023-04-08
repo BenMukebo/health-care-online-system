@@ -46,9 +46,6 @@ private
 
 def hospital_params
   params.require(:hospital).permit(:name, :treatments_counter, :healthcare_requests_counter, :data, :address, :status, :user_id)
-end
-end
-end
-
-
+  end
+ end
 end
