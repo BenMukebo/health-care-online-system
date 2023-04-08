@@ -10,5 +10,16 @@ class HospitalsController < ApplicationController
   def new
     @hospital = Hospital.new
   end
-  
+
+def create
+  @hospital = Hospital.new(hospital_params)
+
+  if @hospital.save
+    redirect_to @hospital
+  else
+    render :new
+  end
+end
+
+
 end
