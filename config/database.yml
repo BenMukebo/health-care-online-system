@@ -27,8 +27,6 @@ default: &default
 development:
   <<: *default
   database: health_care_online_system_development
-  username: postgres
-  password: alfred
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
