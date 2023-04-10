@@ -1,2 +1,2 @@
 web: bundle exec rails server -p $PORT
-user: bundle exec sidekiq
+css: bin/rails tailwindcss:watch
