@@ -2,7 +2,6 @@ class CreateHospitals < ActiveRecord::Migration[7.0]
   def change
     create_table :hospitals do |t|
       t.string :name
-      t.integer :treatments_counter, default: 0
       t.integer :healthcare_requests_counter,  default: 0
       t.jsonb :data, null: false, default: '{}'
       t.jsonb :address,  null: false, default: '{}'
