@@ -10,7 +10,7 @@ class HospitalsController < ApplicationController
   def new
     @hospital = Hospital.new
   end
-#create hospital
+
 def create
   @hospital = Hospital.new(hospital_params)
 
@@ -53,7 +53,7 @@ def hospital_params
       :rooms => [:integer],
       :ratings => [:integer]
     },
-    :status,
+    :status
     :user_id
   )
   end
