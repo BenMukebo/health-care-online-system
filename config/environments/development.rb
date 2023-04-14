@@ -16,6 +16,7 @@ config.after_initialize do
   Bullet.bullet_logger = true
   Bullet.raise = true #to raise an error
   Bullet.alert = true
+  Bullet.console = true
 end
 
   # Show full error reports.
