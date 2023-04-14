@@ -15,7 +15,7 @@ class HospitalsController < ApplicationController
     @hospital = Hospital.new(hospital_params)
 
     if @hospital.save
-      redirect_to @hospital
+      redirect_to hospital_new_path(@hospital)
     else
       render :new
     end
