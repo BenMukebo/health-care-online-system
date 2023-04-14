@@ -45,7 +45,8 @@ end
 private
 
 def hospital_params
-  params.require(:hospital).permit(:name, :treatments_counter, :healthcare_requests_counter, :data, :address, :status, :user_id)
+  params.require(:hospital).permit(:name,:treatments_counter,:healthcare_requests_counter,
+    :data => {:address => %i[country city state zip_code],:status => :string,:user_id => :integer,:other_info => :json})
   end
  end
 end
