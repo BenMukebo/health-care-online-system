@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_132731) do
     t.string "picture"
     t.string "phone"
     t.string "bio"
-    t.integer "merital_status"
+    t.integer "marital_status"
     t.string "gender"
     t.jsonb "data", default: "{}", null: false
     t.jsonb "address", default: "{}", null: false
