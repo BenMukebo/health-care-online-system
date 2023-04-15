@@ -86,10 +86,10 @@ class UserDashboard < Administrate::BaseDashboard
     status
     role
   ].freeze
-  #encrypted_password
-  #remember_created_at
-  #reset_password_sent_at
-  #reset_password_token
+  # encrypted_password
+  # remember_created_at
+  # reset_password_sent_at
+  # reset_password_token
 
   # COLLECTION_FILTERS
   # a hash that defines filters that can be used while searching via the search
