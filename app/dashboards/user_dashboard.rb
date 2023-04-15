@@ -10,7 +10,25 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     role: Field::BelongsTo,
     id: Field::Number,
-    email: Field::String,
+    email: Field::Email,
+    password: Field::Password,
+    first_name: Field::String,
+    familly_name: Field::String,
+    matricule_number: Field::Number,
+    picture: Field::Url,
+    phone: Field::String,
+    marital_status: Field::Select.with_options(
+      collection: User.marital_statuses.keys
+    ),
+    gender: Field::Select.with_options(
+      collection: User.genders.keys
+    ),
+    # data: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
+    # address: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
+    # status: Field::string,
+    status: Field::Select.with_options(
+      collection: User.statuses.keys
+    ),
     encrypted_password: Field::String,
     remember_created_at: Field::DateTime,
     reset_password_sent_at: Field::DateTime,
@@ -26,18 +44,27 @@ class UserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    first_name
+    familly_name
     email
-    encrypted_password
+    marital_status
     role
+    status
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-    role
     id
     email
+    phone
+    marital_status
+    gender
     encrypted_password
+    matricule_number
+    gender
+    role
+    status
     remember_created_at
     reset_password_sent_at
     reset_password_token
@@ -49,12 +76,20 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    first_name
+    familly_name
     email
-    encrypted_password
-    remember_created_at
-    reset_password_sent_at
-    reset_password_token
+    password
+    phone
+    marital_status
+    gender
+    status
+    role
   ].freeze
+  #encrypted_password
+  #remember_created_at
+  #reset_password_sent_at
+  #reset_password_token
 
   # COLLECTION_FILTERS
   # a hash that defines filters that can be used while searching via the search
