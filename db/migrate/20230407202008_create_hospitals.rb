@@ -3,7 +3,7 @@ class CreateHospitals < ActiveRecord::Migration[7.0]
     create_table :hospitals do |t|
       t.string :name, null: false
       t.jsonb :address, null: false, default: {}
-      t.jsonb :data, default: {}
+      t.jsonb :data, null: false, default: {}
       t.integer :status, default: 0, null: false
       t.references :user, null: false, foreign_key: true
 

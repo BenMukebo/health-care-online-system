@@ -15,11 +15,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_07_202008) do
   enable_extension "plpgsql"
 
   create_table "hospitals", force: :cascade do |t|
-    t.string "name"
-    t.integer "treatments_counter", default: 0
-    t.integer "healthcare_requests_counter", default: 0
-    t.jsonb "data", default: "{}", null: false
-    t.jsonb "address", default: "{}", null: false
+    t.string "name", null: false
+    t.jsonb "address", default: {}, null: false
+    t.jsonb "data", default: {}, null: false
     t.integer "status", default: 0, null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
