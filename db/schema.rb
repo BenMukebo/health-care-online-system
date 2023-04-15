@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_132731) do
     t.string "first_name"
     t.string "familly_name"
     t.string "middle_name"
-    t.integer "matricule_number"
+    t.string "matricule_number", limit: 8
     t.string "picture"
     t.string "phone"
     t.string "bio"
