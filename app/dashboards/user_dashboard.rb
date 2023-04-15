@@ -8,6 +8,7 @@ class UserDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    role: Field::BelongsTo,
     id: Field::Number,
     email: Field::String,
     encrypted_password: Field::String,
@@ -27,12 +28,13 @@ class UserDashboard < Administrate::BaseDashboard
     id
     email
     encrypted_password
-    remember_created_at
+    role
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
+    role
     id
     email
     encrypted_password
