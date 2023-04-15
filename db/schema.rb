@@ -42,7 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_132731) do
     t.jsonb "address", default: "{}", null: false
     t.jsonb "phyisical_appearence", default: "{}", null: false
     t.string "privacy_policy"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.bigint "role_id", null: false
     t.index ["address"], name: "index_users_on_address", using: :gin
     t.index ["data"], name: "index_users_on_data", using: :gin

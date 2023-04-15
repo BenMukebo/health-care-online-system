@@ -13,7 +13,7 @@ class AddDataInfoAddressToUsers < ActiveRecord::Migration[7.0]
     add_column :users, :address, :jsonb, null: false, default: '{}'
     add_column :users, :phyisical_appearence , :jsonb, null: false, default: '{}'
     add_column :users, :privacy_policy, :string
-    add_column :users, :status, :integer
+    add_column :users, :status, :integer, default: 0, null: false
     add_reference :users, :role, null: false, foreign_key: true, index: true
 
     add_index :users, :matricule_number, unique: true
