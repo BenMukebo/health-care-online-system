@@ -12,9 +12,10 @@ class HospitalDashboard < Administrate::BaseDashboard
     address: Field::String.with_options(searchable: false),
     data: Field::String.with_options(searchable: false),
     name: Field::String,
-    status: Field::Select.with_options(searchable: false, collection: lambda { |field|
-                                                                        field.resource.class.send(field.attribute.to_s.pluralize).keys
-                                                                      }),
+    status: Field::Select.with_options(searchable: false,
+                                       collection: lambda { |field|
+                                                     field.resource.class.send(field.attribute.to_s.pluralize).keys
+                                                   }),
     user_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
@@ -27,18 +28,18 @@ class HospitalDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    address
-    data
     name
+    data
+    address
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    name
     address
     data
-    name
     status
     user_id
     created_at
@@ -49,9 +50,9 @@ class HospitalDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    address
-    data
     name
+    data
+    address
     status
     user_id
   ].freeze
