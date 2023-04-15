@@ -14,7 +14,7 @@ class UserDashboard < Administrate::BaseDashboard
     password: Field::Password,
     first_name: Field::String,
     familly_name: Field::String,
-    matricule_number: Field::Number,
+    matricule_number: Field::String,
     picture: Field::Url,
     phone: Field::String,
     marital_status: Field::Select.with_options(
