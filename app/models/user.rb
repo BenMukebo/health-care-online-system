@@ -6,12 +6,17 @@ class User < ApplicationRecord
 
   belongs_to :role
 
+  before_create :generate_matricule_number
+
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, on: :create
   validates :first_name, :familly_name, length: { maximum: 11 }
   validates :phone, uniqueness: true, length: { within: 10..16 }, allow_blank: true
+  validates :matricule_number, uniqueness: true, presence: true, length: { is: 8 }
   # validates :matricule_number, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates_numericality_of :matricule_number, only_integer: true, greater_than_or_equal: 0, allow_blank: true
+  # validates_numericality_of :matricule_number, only_integer: true, greater_than_or_equal: 0, allow_blank: true
+  # validates :data, presence: true, length: { maximum: 9 }
+  # validates :address, presence: true, length: { maximum: 4 }
 
   enum marital_status: { single: 0, married: 1, widowed: 2, divorced: 3, separated: 4 }, _default: 'single'
   validates :marital_status, inclusion: { in: marital_statuses.keys }, allow_blank: true
@@ -32,5 +37,11 @@ class User < ApplicationRecord
     else
       @not_valid_status = true
     end
+  end
+
+  private
+
+  def generate_matricule_number
+    self.matricule_number = SecureRandom.random_number(10**8).to_s.rjust(8, '0')
   end
 end
