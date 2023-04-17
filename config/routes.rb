@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :admin do
     resources :users
+    resources :roles
   end
 
   root to: "admin/users#index"
