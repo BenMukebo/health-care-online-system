@@ -6,25 +6,27 @@ class User < ApplicationRecord
 
   belongs_to :role
 
-  before_create :generate_matricule_number
+  before_create :generate_matricule_number, unless: -> { matricule_number.present? }
+  before_validation :generate_matricule_number, on: :create
 
-  validates :email, presence: true, uniqueness: true
   validates :password, presence: true, on: :create
-  validates :first_name, :familly_name, length: { maximum: 11 }
+  validates :first_name, :familly_name, presence: true, length: { maximum: 11 }
   validates :phone, uniqueness: true, length: { within: 10..16 }, allow_blank: true
-  validates :matricule_number, uniqueness: true, presence: true, length: { is: 8 }
+  validates :matricule_number, presence: true, length: { is: 8 },
+                               uniqueness: { message: 'Matricule number must be unique and exactly 8 characters' }
+
   # validates :matricule_number, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   # validates_numericality_of :matricule_number, only_integer: true, greater_than_or_equal: 0, allow_blank: true
   # validates :data, presence: true, length: { maximum: 9 }
   # validates :address, presence: true, length: { maximum: 4 }
 
-  enum marital_status: { single: 0, married: 1, widowed: 2, divorced: 3, separated: 4 }, _default: 'single'
+  enum marital_status: { Single: 0, Married: 1, Midowed: 2, Divorced: 3, Separated: 4 }, _default: 'Single'
   validates :marital_status, inclusion: { in: marital_statuses.keys }, allow_blank: true
 
   enum genders: { Male: 'M', Female: 'F' }
   validates :gender, inclusion: { in: genders.keys }, allow_blank: true
 
-  STATUS = { inactive: 0, active: 1, rest: 3 }.freeze
+  STATUS = { Anactive: 0, Active: 1, Rest: 3 }.freeze
   enum status: STATUS
 
   validate do
