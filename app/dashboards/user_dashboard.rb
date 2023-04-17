@@ -25,10 +25,10 @@ class UserDashboard < Administrate::BaseDashboard
     ),
     # data: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
     # address: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
-    # status: Field::string,
-    status: Field::Select.with_options(
-      collection: User.statuses.keys
-    ),
+    status: Field::Select.with_options(searchable: false,
+                                       collection: lambda { |field|
+                                                     field.resource.class.send(field.attribute.to_s.pluralize).keys
+                                                   }),
     encrypted_password: Field::String,
     remember_created_at: Field::DateTime,
     reset_password_sent_at: Field::DateTime,
@@ -79,13 +79,13 @@ class UserDashboard < Administrate::BaseDashboard
     first_name
     familly_name
     email
-    password
     phone
     marital_status
     gender
     status
     role
   ].freeze
+  # password
   # encrypted_password
   # remember_created_at
   # reset_password_sent_at
