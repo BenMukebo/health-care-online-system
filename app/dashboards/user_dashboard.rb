@@ -18,17 +18,22 @@ class UserDashboard < Administrate::BaseDashboard
     picture: Field::Url,
     phone: Field::String,
     marital_status: Field::Select.with_options(
-      collection: User.marital_statuses.keys
+      searchable: false,
+      collection: lambda { |field|
+                    field.resource.class.send(field.attribute.to_s.pluralize).keys
+                  }
     ),
     gender: Field::Select.with_options(
       collection: User.genders.keys
     ),
     # data: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
     # address: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
-    status: Field::Select.with_options(searchable: false,
-                                       collection: lambda { |field|
-                                                     field.resource.class.send(field.attribute.to_s.pluralize).keys
-                                                   }),
+    status: Field::Select.with_options(
+      searchable: false,
+      collection: lambda { |field|
+                    field.resource.class.send(field.attribute.to_s.pluralize).keys
+                  }
+    ),
     encrypted_password: Field::String,
     remember_created_at: Field::DateTime,
     reset_password_sent_at: Field::DateTime,
@@ -62,7 +67,6 @@ class UserDashboard < Administrate::BaseDashboard
     gender
     encrypted_password
     matricule_number
-    gender
     role
     status
     remember_created_at
@@ -79,13 +83,13 @@ class UserDashboard < Administrate::BaseDashboard
     first_name
     familly_name
     email
+    password
     phone
     marital_status
     gender
     status
     role
   ].freeze
-  # password
   # encrypted_password
   # remember_created_at
   # reset_password_sent_at
