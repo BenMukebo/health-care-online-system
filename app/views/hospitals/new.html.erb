@@ -1,0 +1,25 @@
+<%= form_with(model: @hospital, url: new_admin_hospital, method: "GET") do |form| %>
+  <div class="mb-4">
+    <%= form.label :name, class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.text_field :name, class: "form-input mt-1 block w-full" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :address, class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.text_field :address_line_1, placeholder: "Address line 1", class: "form-input mt-1 block w-full" %>
+    <%= form.text_field :address_line_2, placeholder: "Address line 2", class: "form-input mt-1 block w-full" %>
+    <%= form.text_field :city, placeholder: "City", class: "form-input mt-1 block w-full" %>
+    <%= form.text_field :state, placeholder: "State", class: "form-input mt-1 block w-full" %>
+    <%= form.text_field :zip_code, placeholder: "Zip code", class: "form-input mt-1 block w-full" %>
+  </div>
+
+<div class="mb-4">
+  <%= form.label :status, class: "block text-gray-700 font-bold mb-2" %>
+  <%= form.select :status, options_for_select(Hospital.statuses.keys), {}, class: "form-select mt-1 block w-full" %>
+</div>
+
+
+  <div class="flex items-center justify-between">
+    <%= form.submit "Create Hospital", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+  </div>
+<% end %>
