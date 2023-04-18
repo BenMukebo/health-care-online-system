@@ -1,8 +1,9 @@
 class Role < ApplicationRecord
   has_many :users
 
-  validates :name, presence: true, uniqueness: true
+  NAME = %i[guest client employee manager admin superAdmin].freeze
+  enum name: NAME.freeze, _default: 0
 
-  NAME = { guest: 0, client: 1, employee: 2, manager: 3, admin: 4, superAdmin: 5 }.freeze
-  enum name: NAME, _default: 0
+  validates :name, presence: true, uniqueness: true
+  validates :name, inclusion: { in: NAME }
 end
