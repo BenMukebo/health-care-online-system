@@ -13,7 +13,10 @@ Rails.application.configure do
 # configuration for bullet
 config.after_initialize do
   Bullet.enable = true
+  Bullet.bullet_logger = true
+  Bullet.raise = true #to raise an error
   Bullet.alert = true
+  Bullet.console = true
 end
 
   # Show full error reports.
