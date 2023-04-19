@@ -5,5 +5,5 @@ class Role < ApplicationRecord
   enum name: NAME.freeze, _default: 0
 
   validates :name, presence: true, uniqueness: true
-  validates :name, inclusion: { in: NAME }
+  validates :name, inclusion: { in: names.keys }
 end
