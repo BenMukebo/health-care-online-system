@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :roles
-    resources :hospitals, only: [:index, :show, :edit, :update, :new, :create ]
+    resources :hospitals, only: [:index, :show, :edit, :update, :new, :create, :destroy]
   end
 
   root to: "admin/users#index"
