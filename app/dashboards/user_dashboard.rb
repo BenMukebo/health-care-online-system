@@ -28,6 +28,8 @@ class UserDashboard < Administrate::BaseDashboard
     ),
     # data: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
     # address: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
+    address: Field::String.with_options(searchable: false),
+    data: Field::String.with_options(searchable: false),
     status: Field::Select.with_options(
       searchable: false,
       collection: lambda { |field|
@@ -68,6 +70,8 @@ class UserDashboard < Administrate::BaseDashboard
     encrypted_password
     matricule_number
     role
+    data
+    address
     status
     remember_created_at
     reset_password_sent_at
@@ -83,13 +87,15 @@ class UserDashboard < Administrate::BaseDashboard
     first_name
     familly_name
     email
-    password
     phone
     marital_status
     gender
+    data
+    address
     status
     role
   ].freeze
+  # password
   # encrypted_password
   # remember_created_at
   # reset_password_sent_at

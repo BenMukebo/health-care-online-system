@@ -12,11 +12,12 @@ class HospitalDashboard < Administrate::BaseDashboard
     address: Field::String.with_options(searchable: false),
     data: Field::String.with_options(searchable: false),
     name: Field::String,
-    status: Field::Select.with_options(searchable: false,
-                                       collection: lambda { |field|
-                                                     field.resource.class.send(field.attribute.to_s.pluralize).keys
-                                                   }),
-    user_id: Field::Number,
+    status: Field::Select.with_options(
+      searchable: false,
+      collection: lambda { |field|
+                    field.resource.class.send(field.attribute.to_s.pluralize).keys
+                  }
+    ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -41,7 +42,6 @@ class HospitalDashboard < Administrate::BaseDashboard
     address
     data
     status
-    user_id
     created_at
     updated_at
   ].freeze
@@ -54,7 +54,6 @@ class HospitalDashboard < Administrate::BaseDashboard
     data
     address
     status
-    user_id
   ].freeze
 
   # COLLECTION_FILTERS
