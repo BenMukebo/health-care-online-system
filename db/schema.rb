@@ -19,14 +19,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_132731) do
     t.jsonb "address", default: {}, null: false
     t.jsonb "data", default: {}, null: false
     t.integer "status", default: 0, null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_hospitals_on_address", using: :gin
     t.index ["data"], name: "index_hospitals_on_data", using: :gin
-    t.index ["name"], name: "index_hospitals_on_name", unique: true
+    t.index ["name"], name: "index_hospitals_on_name"
     t.index ["status"], name: "index_hospitals_on_status"
-    t.index ["user_id"], name: "index_hospitals_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -68,6 +66,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_132731) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "hospitals", "users"
   add_foreign_key "users", "roles"
 end
