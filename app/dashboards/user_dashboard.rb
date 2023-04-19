@@ -17,6 +17,8 @@ class UserDashboard < Administrate::BaseDashboard
     matricule_number: Field::String,
     picture: Field::Url,
     phone: Field::String,
+    bio: Field::String,
+    middle_name: Field::String,
     marital_status: Field::Select.with_options(
       searchable: false,
       collection: lambda { |field|
@@ -30,6 +32,7 @@ class UserDashboard < Administrate::BaseDashboard
     # address: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
     address: Field::String.with_options(searchable: false),
     data: Field::String.with_options(searchable: false),
+    phyisical_appearence: Field::String.with_options(searchable: false),
     status: Field::Select.with_options(
       searchable: false,
       collection: lambda { |field|
@@ -55,6 +58,7 @@ class UserDashboard < Administrate::BaseDashboard
     familly_name
     email
     marital_status
+    address
     role
     status
   ].freeze
@@ -65,6 +69,8 @@ class UserDashboard < Administrate::BaseDashboard
     id
     email
     phone
+    first_name
+    familly_name
     marital_status
     gender
     encrypted_password
@@ -72,13 +78,14 @@ class UserDashboard < Administrate::BaseDashboard
     role
     data
     address
+    phyisical_appearence
     status
-    remember_created_at
-    reset_password_sent_at
-    reset_password_token
     created_at
     updated_at
   ].freeze
+  # remember_created_at
+  # reset_password_sent_at
+  # reset_password_token
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
@@ -87,6 +94,7 @@ class UserDashboard < Administrate::BaseDashboard
     first_name
     familly_name
     email
+    password
     phone
     marital_status
     gender
@@ -95,10 +103,7 @@ class UserDashboard < Administrate::BaseDashboard
     status
     role
   ].freeze
-  # password
   # encrypted_password
-  # remember_created_at
-  # reset_password_sent_at
   # reset_password_token
 
   # COLLECTION_FILTERS
