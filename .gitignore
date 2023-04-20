@@ -26,6 +26,9 @@
 !/tmp/storage/.keep
 
 /public/assets
+/Gemfile
+/.ruby-version
+/database.yml
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key

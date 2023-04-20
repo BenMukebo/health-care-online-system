@@ -11,5 +11,5 @@ Rails.application.routes.draw do
     resources :hospitals, only: [:index, :show, :edit, :update, :new, :create, :destroy]
   end
 
-  root to: "admin/users#index"
+  root to: "home#home"
 end

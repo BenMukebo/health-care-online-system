@@ -18,15 +18,17 @@ default: &default
   adapter: postgresql
   encoding: unicode
 
-  # username: postgres
-  # password: alfred
+  username: postgres
+  password: alfred
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: health_care_online_system_development
+  database: health_care_online_system_development_1
+  username: postgres
+  password: alfred
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -60,7 +62,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: health_care_online_system_test
+  database: health_care_online_system_test_1
+  username: postgres
+  password: alfred
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -84,6 +88,6 @@ test:
 #
 production:
   <<: *default
-  database: health_care_online_system_production
+  database: health_care_online_system_production_1
   username: health_care_online_system
   password: <%= ENV["HEALTH_CARE_ONLINE_SYSTEM_DATABASE_PASSWORD"] %>
