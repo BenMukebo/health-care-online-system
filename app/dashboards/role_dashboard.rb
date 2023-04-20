@@ -1,6 +1,6 @@
 require 'administrate/base_dashboard'
 
-class HospitalDashboard < Administrate::BaseDashboard
+class RoleDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,15 +9,11 @@ class HospitalDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    address: Field::String.with_options(searchable: false),
-    data: Field::String.with_options(searchable: false),
-    name: Field::String,
-    status: Field::Select.with_options(
-      searchable: false,
-      collection: lambda { |field|
-                    field.resource.class.send(field.attribute.to_s.pluralize).keys
-                  }
-    ),
+    name: Field::Select.with_options(searchable: false,
+                                     collection: lambda { |field|
+                                                   field.resource.class.send(field.attribute.to_s.pluralize).keys
+                                                 }),
+    users: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -30,8 +26,8 @@ class HospitalDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     name
-    data
-    address
+    users
+    created_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -39,9 +35,7 @@ class HospitalDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     name
-    address
-    data
-    status
+    users
     created_at
     updated_at
   ].freeze
@@ -51,9 +45,7 @@ class HospitalDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     name
-    data
-    address
-    status
+    users
   ].freeze
 
   # COLLECTION_FILTERS
@@ -68,11 +60,10 @@ class HospitalDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how hospitals are displayed
+  # Overwrite this method to customize how roles are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(hospital)
-    #   "Hospital ##{hospital.id}"
-    hospital.name
+  def display_resource(role)
+    role.name
   end
 end

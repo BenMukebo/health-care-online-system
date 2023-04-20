@@ -1,7 +1,5 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should belongs_to(:roles)
 end

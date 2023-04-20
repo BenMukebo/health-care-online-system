@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :admin do
     resources :users
-    resources :hospitals, only: [:index, :show, :edit, :update, :new, :create ]
+    resources :roles
+    resources :hospitals, only: [:index, :show, :edit, :update, :new, :create, :destroy]
   end
 
   root to: "admin/users#index"

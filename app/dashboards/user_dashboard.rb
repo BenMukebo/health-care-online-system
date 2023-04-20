@@ -8,8 +8,37 @@ class UserDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    role: Field::BelongsTo,
     id: Field::Number,
-    email: Field::String,
+    email: Field::Email,
+    password: Field::Password,
+    first_name: Field::String,
+    familly_name: Field::String,
+    matricule_number: Field::String,
+    picture: Field::Url,
+    phone: Field::String,
+    bio: Field::String,
+    middle_name: Field::String,
+    marital_status: Field::Select.with_options(
+      searchable: false,
+      collection: lambda { |field|
+                    field.resource.class.send(field.attribute.to_s.pluralize).keys
+                  }
+    ),
+    gender: Field::Select.with_options(
+      collection: User.genders.keys
+    ),
+    # data: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
+    # address: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
+    address: Field::String.with_options(searchable: false),
+    data: Field::String.with_options(searchable: false),
+    phyisical_appearence: Field::String.with_options(searchable: false),
+    status: Field::Select.with_options(
+      searchable: false,
+      collection: lambda { |field|
+                    field.resource.class.send(field.attribute.to_s.pluralize).keys
+                  }
+    ),
     encrypted_password: Field::String,
     remember_created_at: Field::DateTime,
     reset_password_sent_at: Field::DateTime,
@@ -25,9 +54,13 @@ class UserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    first_name
+    familly_name
     email
-    encrypted_password
-    remember_created_at
+    marital_status
+    address
+    role
+    status
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,24 +68,43 @@ class UserDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     email
+    phone
+    first_name
+    familly_name
+    marital_status
+    gender
     encrypted_password
-    remember_created_at
-    reset_password_sent_at
-    reset_password_token
+    matricule_number
+    role
+    data
+    address
+    phyisical_appearence
+    status
     created_at
     updated_at
   ].freeze
+  # remember_created_at
+  # reset_password_sent_at
+  # reset_password_token
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    first_name
+    familly_name
     email
-    encrypted_password
-    remember_created_at
-    reset_password_sent_at
-    reset_password_token
+    password
+    phone
+    marital_status
+    gender
+    data
+    address
+    status
+    role
   ].freeze
+  # encrypted_password
+  # reset_password_token
 
   # COLLECTION_FILTERS
   # a hash that defines filters that can be used while searching via the search
@@ -69,7 +121,8 @@ class UserDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how users are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(user)
-  #   "User ##{user.id}"
-  # end
+  def display_resource(user)
+    # "User ##{user.id}"
+    user.email
+  end
 end

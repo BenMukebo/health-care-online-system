@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_07_202008) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_15_132731) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,14 +19,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_07_202008) do
     t.jsonb "address", default: {}, null: false
     t.jsonb "data", default: {}, null: false
     t.integer "status", default: 0, null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_hospitals_on_address", using: :gin
     t.index ["data"], name: "index_hospitals_on_data", using: :gin
-    t.index ["name"], name: "index_hospitals_on_name", unique: true
+    t.index ["name"], name: "index_hospitals_on_name"
     t.index ["status"], name: "index_hospitals_on_status"
-    t.index ["user_id"], name: "index_hospitals_on_user_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.integer "name", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_roles_on_name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,9 +42,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_07_202008) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "familly_name"
+    t.string "middle_name"
+    t.string "matricule_number", limit: 8
+    t.string "picture"
+    t.string "phone"
+    t.string "bio"
+    t.integer "marital_status"
+    t.string "gender"
+    t.jsonb "data", default: "{}", null: false
+    t.jsonb "address", default: "{}", null: false
+    t.jsonb "phyisical_appearence", default: "{}", null: false
+    t.string "privacy_policy"
+    t.integer "status", default: 0, null: false
+    t.bigint "role_id", null: false
+    t.index ["address"], name: "index_users_on_address", using: :gin
+    t.index ["data"], name: "index_users_on_data", using: :gin
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["matricule_number"], name: "index_users_on_matricule_number", unique: true
+    t.index ["phyisical_appearence"], name: "index_users_on_phyisical_appearence", using: :gin
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "hospitals", "users"
+  add_foreign_key "users", "roles"
 end
