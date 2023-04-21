@@ -21,6 +21,30 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :role %><br />
+    <%= f.text_field :role %>
+    <% if resource.errors.has_key?(:role) %>
+      <span class="error"><%= resource.errors[:role].first %></span>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+    <% if resource.errors.has_key?(:first_name) %>
+      <span class="error"><%= resource.errors[:first_name].first %></span>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :familly_name %><br />
+    <%= f.text_field :familly_name %>
+    <% if resource.errors.has_key?(:family_name) %>
+      <span class="error"><%= resource.errors[:familly_name].first %></span>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up", data: {turbo: false} %>
   </div>
