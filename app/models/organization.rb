@@ -1,5 +1,5 @@
 class Organization < ApplicationRecord
-  # has_many :users
+  # has_many :users, dependent: :destroy
 
   enum status: { inactive: 0, active: 1 }.freeze
 

@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_21_011322) do
   create_table "organizations", force: :cascade do |t|
     t.string "name", null: false
     t.string "logo"
-    t.string "register_number", limit: 6
+    t.string "register_number", limit: 8
     t.jsonb "data", default: {}, null: false
     t.jsonb "location", default: {}, null: false
     t.integer "status", default: 0, null: false
