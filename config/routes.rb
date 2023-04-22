@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :roles
+    resources :organizations, only: [:index, :show, :edit, :update, :new, :create, :destroy]
     resources :hospitals, only: [:index, :show, :edit, :update, :new, :create, :destroy]
   end
 
