@@ -1,5 +1,7 @@
 class Hospital < ApplicationRecord
   # has_many :users
+  has_many :contracts, dependent: :destroy
+  has_many :organizations, through: :contracts # , dependent: :destroy
 
   enum status: { inactive: 0, active: 1, under_investigation: 2 }.freeze
 
