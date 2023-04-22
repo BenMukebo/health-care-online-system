@@ -10,7 +10,7 @@ class CreateContracts < ActiveRecord::Migration[7.0]
       t.integer :agreement_type
       t.integer :status, default: 0, null: false
       t.string :legal_document
-      t.boolean :privacy_policy
+      # t.boolean :privacy_policy
       t.boolean :renewal_option
 
       t.timestamps

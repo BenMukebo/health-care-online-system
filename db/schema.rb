@@ -91,7 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_22_131319) do
     t.string "matricule_number", limit: 8
     t.string "picture"
     t.string "phone"
-    t.string "bio"
+    t.text "bio"
     t.integer "marital_status"
     t.string "gender"
     t.jsonb "data", default: "{}", null: false
