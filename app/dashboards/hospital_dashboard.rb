@@ -12,6 +12,10 @@ class HospitalDashboard < Administrate::BaseDashboard
     address: Field::String.with_options(searchable: false),
     data: Field::String.with_options(searchable: false),
     name: Field::String,
+    email: Field::Email,
+    phone_number: Field::Password,
+    register_number: Field::String,
+    terms_of_service: Field::Text,
     status: Field::Select.with_options(
       searchable: false,
       collection: lambda { |field|
@@ -32,6 +36,7 @@ class HospitalDashboard < Administrate::BaseDashboard
     name
     data
     address
+    status
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -39,8 +44,12 @@ class HospitalDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     name
-    address
     data
+    address
+    terms_of_service
+    register_number
+    email
+    phone_number
     status
     created_at
     updated_at
@@ -53,7 +62,11 @@ class HospitalDashboard < Administrate::BaseDashboard
     name
     data
     address
+    terms_of_service
     status
+    register_number
+    email
+    phone_number
   ].freeze
 
   # COLLECTION_FILTERS

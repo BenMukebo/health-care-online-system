@@ -13,7 +13,10 @@ class OrganizationDashboard < Administrate::BaseDashboard
     location: Field::String.with_options(searchable: false),
     logo: Field::String,
     name: Field::String,
+    email: Field::Email,
+    phone_number: Field::Password,
     register_number: Field::String,
+    terms_of_service: Field::Text,
     status: Field::Select.with_options(
       searchable: false,
       collection: lambda { |field|
@@ -34,6 +37,7 @@ class OrganizationDashboard < Administrate::BaseDashboard
     name
     data
     location
+    status
     logo
   ].freeze
 
@@ -42,10 +46,13 @@ class OrganizationDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     name
+    logo
     data
     location
-    logo
+    terms_of_service
     register_number
+    email
+    phone_number
     status
     created_at
     updated_at
@@ -56,11 +63,14 @@ class OrganizationDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     name
+    logo
     data
     location
-    logo
-    register_number
+    terms_of_service
     status
+    register_number
+    email
+    phone_number
   ].freeze
 
   # COLLECTION_FILTERS
