@@ -8,9 +8,10 @@ class HospitalDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    contracts: Field::HasMany,
     id: Field::Number,
     address: Field::String.with_options(searchable: false),
-    data: Field::String.with_options(searchable: false),
+    data: Field::Text.with_options(searchable: false),
     name: Field::String,
     email: Field::Email,
     phone_number: Field::Password,
@@ -51,9 +52,10 @@ class HospitalDashboard < Administrate::BaseDashboard
     email
     phone_number
     status
-    created_at
-    updated_at
+    contracts
   ].freeze
+  # created_at
+  # updated_at
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed

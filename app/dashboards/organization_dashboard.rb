@@ -8,8 +8,9 @@ class OrganizationDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    contracts: Field::HasMany,
     id: Field::Number,
-    data: Field::String.with_options(searchable: false),
+    data: Field::Text.with_options(searchable: false),
     location: Field::String.with_options(searchable: false),
     logo: Field::String,
     name: Field::String,
@@ -54,9 +55,10 @@ class OrganizationDashboard < Administrate::BaseDashboard
     email
     phone_number
     status
-    created_at
-    updated_at
+    contracts
   ].freeze
+  # created_at
+  # updated_at
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
