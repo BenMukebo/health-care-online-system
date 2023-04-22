@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   validates :first_name, :familly_name, presence: true, length: { maximum: 11 }
   validates :phone, uniqueness: true, length: { within: 10..16 }, allow_blank: true
+  validates :agreed_to_terms, presence: true, inclusion: { in: [true, false] }
+
   # validates :data, presence: true, length: { maximum: 9 }
   # validates :address, presence: true, length: { maximum: 4 }
 

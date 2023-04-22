@@ -5,5 +5,5 @@ class Organization < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates_presence_of :status
-  validates_uniqueness_of :email, :phone_number, :register_number
+  validates_uniqueness_of :email, :phone_number, :register_number, allow_blank: true
 end
