@@ -3,8 +3,8 @@ class CreateContracts < ActiveRecord::Migration[7.0]
     create_table :contracts do |t|
       t.references :organization, null: false, foreign_key: true
       t.references :hospital, null: false, foreign_key: true
-      t.string :start_date
-      t.string :end_date
+      t.date :start_date
+      t.date :end_date
       t.jsonb :terms_of_agreement, null: false, default: {}
       # t.string :value
       t.integer :agreement_type

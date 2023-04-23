@@ -17,8 +17,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_22_131319) do
   create_table "contracts", force: :cascade do |t|
     t.bigint "organization_id", null: false
     t.bigint "hospital_id", null: false
-    t.string "start_date"
-    t.string "end_date"
+    t.date "start_date"
+    t.date "end_date"
     t.jsonb "terms_of_agreement", default: {}, null: false
     t.integer "agreement_type"
     t.integer "status", default: 0, null: false
