@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_15_132731) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_21_011322) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_132731) do
     t.index ["data"], name: "index_hospitals_on_data", using: :gin
     t.index ["name"], name: "index_hospitals_on_name"
     t.index ["status"], name: "index_hospitals_on_status"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "logo"
+    t.string "register_number", limit: 8
+    t.jsonb "data", default: {}, null: false
+    t.jsonb "location", default: {}, null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["data"], name: "index_organizations_on_data", using: :gin
+    t.index ["location"], name: "index_organizations_on_location", using: :gin
+    t.index ["name"], name: "index_organizations_on_name"
+    t.index ["register_number"], name: "index_organizations_on_register_number", unique: true
+    t.index ["status"], name: "index_organizations_on_status"
   end
 
   create_table "roles", force: :cascade do |t|
