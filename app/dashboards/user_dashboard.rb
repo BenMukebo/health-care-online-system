@@ -1,5 +1,4 @@
 require 'administrate/base_dashboard'
-require_relative '../fields/jsonb_field'
 
 class UserDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
