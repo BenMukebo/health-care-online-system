@@ -14,8 +14,8 @@ Rails.application.configure do
 config.after_initialize do
   Bullet.enable = true
   Bullet.bullet_logger = true
-  Bullet.raise = true #to raise an error
-  Bullet.alert = true
+  Bullet.raise = false #to raise an error
+  Bullet.alert = false
   Bullet.console = true
 end
 

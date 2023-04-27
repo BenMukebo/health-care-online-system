@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :roles
     resources :organizations, only: [:index, :show, :edit, :update, :new, :create, :destroy]
     resources :hospitals, only: [:index, :show, :edit, :update, :new, :create, :destroy]
+    resources :contracts
   end
 
   root to: "admin/users#index"

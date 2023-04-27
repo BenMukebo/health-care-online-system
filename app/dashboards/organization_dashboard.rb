@@ -8,12 +8,16 @@ class OrganizationDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    contracts: Field::HasMany,
     id: Field::Number,
-    data: Field::String.with_options(searchable: false),
+    data: Field::Text.with_options(searchable: false),
     location: Field::String.with_options(searchable: false),
     logo: Field::String,
     name: Field::String,
+    email: Field::Email,
+    phone_number: Field::Password,
     register_number: Field::String,
+    terms_of_service: Field::Text,
     status: Field::Select.with_options(
       searchable: false,
       collection: lambda { |field|
@@ -34,6 +38,7 @@ class OrganizationDashboard < Administrate::BaseDashboard
     name
     data
     location
+    status
     logo
   ].freeze
 
@@ -42,25 +47,32 @@ class OrganizationDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     name
+    logo
     data
     location
-    logo
+    terms_of_service
     register_number
+    email
+    phone_number
     status
-    created_at
-    updated_at
+    contracts
   ].freeze
+  # created_at
+  # updated_at
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     name
+    logo
     data
     location
-    logo
-    register_number
+    terms_of_service
     status
+    register_number
+    email
+    phone_number
   ].freeze
 
   # COLLECTION_FILTERS
