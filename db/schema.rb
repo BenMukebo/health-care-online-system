@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_21_011322) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_24_225611) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,7 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_21_011322) do
     t.jsonb "phyisical_appearence", default: "{}", null: false
     t.string "privacy_policy"
     t.integer "status", default: 0, null: false
-    t.bigint "role_id", null: false
+    t.bigint "role_id", default: 1, null: false
     t.index ["address"], name: "index_users_on_address", using: :gin
     t.index ["data"], name: "index_users_on_data", using: :gin
     t.index ["email"], name: "index_users_on_email", unique: true
