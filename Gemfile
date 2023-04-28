@@ -20,7 +20,8 @@ gem 'puma', '~> 5.0'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 
-gem 'administrate'
+gem 'administrate', '~> 0.18.0'
+# gem "administrate", github: "n-studio/administrate", branch: "compile-assets"
 
 gem 'devise'
 
