@@ -3,6 +3,15 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  def home
+    # TODO: Implement logic for home page
+  end
+
+  def logout
+    sign_out(current_user)
+    redirect_to root_path
+  end
+
   private
 
   def configure_permitted_parameters
