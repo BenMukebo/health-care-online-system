@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   belongs_to :role
 
+  after_initialize :set_default_role
+
   before_create :generate_matricule_number, unless: -> { matricule_number.present? }
   # before_validation :generate_matricule_number, on: :create
 
@@ -20,6 +22,9 @@ class User < ApplicationRecord
   # validates :address, presence: true, length: { maximum: 4 }
 
   private
+  def set_default_role
+    self.role = Role.find_or_create_by(name: 'guest') if self.role.nil?
+  end
 
   def generate_matricule_number
     self.matricule_number = SecureRandom.random_number(10**8).to_s.rjust(8, '0')

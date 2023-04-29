@@ -21,6 +21,16 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :familly_name %><br />
+    <%= f.text_field :familly_name, autocomplete: "family_name" %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up", data: {turbo: false} %>
   </div>
