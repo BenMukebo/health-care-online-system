@@ -27,7 +27,8 @@ default: &default
 development:
   <<: *default
   database: health_care_online_system_development
-
+  # username: postgres
+  # password: alfred
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -61,7 +62,8 @@ development:
 test:
   <<: *default
   database: health_care_online_system_test
-
+  # username: postgres
+  # password: alfred
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -87,4 +89,3 @@ production:
   database: health_care_online_system_production
   username: health_care_online_system
   password: <%= ENV["HEALTH_CARE_ONLINE_SYSTEM_DATABASE_PASSWORD"] %>
-  url: <%= ENV["DATABASE_URL"] %>
