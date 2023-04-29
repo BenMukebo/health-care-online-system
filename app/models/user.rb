@@ -10,7 +10,6 @@ class User < ApplicationRecord
 
   before_create :generate_matricule_number, unless: -> { matricule_number.present? }
   # before_validation :generate_matricule_number, on: :create
-
   # enum :marital_status, %i[single married midowed divorced separated].freeze
   enum marital_status: { single: 0, married: 1, midowed: 2, divorced: 3, separated: 4 }.freeze, _default: 0
   enum gender: { male: 'M', female: 'F' }.freeze
@@ -22,8 +21,9 @@ class User < ApplicationRecord
   # validates :address, presence: true, length: { maximum: 4 }
 
   private
+
   def set_default_role
-    self.role = Role.find_or_create_by(name: 'guest') if self.role.nil?
+    self.role = Role.find_or_create_by(name: 'guest') if role.nil?
   end
 
   def generate_matricule_number
