@@ -21,6 +21,7 @@ gem 'puma', '~> 5.0'
 gem 'importmap-rails'
 
 gem 'administrate'
+gem 'administrate-field-jsonb'
 
 gem 'devise'
 

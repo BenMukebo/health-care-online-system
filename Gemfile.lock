@@ -76,6 +76,9 @@ GEM
       kaminari (>= 1.0)
       sassc-rails (~> 2.1)
       selectize-rails (~> 0.6)
+    administrate-field-jsonb (0.4.6)
+      administrate (< 1.0.0)
+      rails (>= 4.2)
     ast (2.4.2)
     bcrypt (3.1.18)
     bindex (0.8.1)
@@ -291,6 +294,7 @@ PLATFORMS
 
 DEPENDENCIES
   administrate
+  administrate-field-jsonb
   bootsnap
   bullet
   capybara
