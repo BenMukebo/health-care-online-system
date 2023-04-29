@@ -8,10 +8,15 @@ class UserDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    role: Field::BelongsTo,
+    # role: Field::BelongsTo,
+    role: Field::BelongsTo.with_options(
+      searchable: true,
+      searchable_fields: ['matricule_number']
+    ),
     id: Field::Number,
     email: Field::Email,
     password: Field::Password,
+    password_confirmation: Field::Password,
     first_name: Field::String,
     familly_name: Field::String,
     matricule_number: Field::String,
@@ -28,8 +33,8 @@ class UserDashboard < Administrate::BaseDashboard
     gender: Field::Select.with_options(
       collection: User.genders.keys
     ),
-    address: Field::String.with_options(searchable: false),
-    data: Field::String.with_options(searchable: false),
+    # address: Field::String.with_options(searchable: false),
+    # data: Field::String.with_options(searchable: false),
     # data: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
     # address: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
     # address: Field::JSONB.with_options(
@@ -40,6 +45,38 @@ class UserDashboard < Administrate::BaseDashboard
     #     zip_code: Field::String
     #   }
     # ),
+    address: Field::JSONB.with_options(advanced_view: {
+      'country' => Field::String,
+      'state'  => Field::String,
+      'city' => Field::String,
+      'zip_code' => Field::Number
+    }),
+
+    # data: Field::JSONB.with_options(
+    #   # transform: %w[to_h symbolize_keys]
+    #   # transform: [:transformation, Proc.new { |item| item.merge({ foo: 'bar' }) }]
+    #   transform: [:parse_json, :some_other_stuff]
+    # ),
+    # data: Field::JSONB.with_options(transform: %i[to_h symbolize_keys], advanced_view: {
+    #   company:  Field::String,
+    #   position: Field::String,
+    #   skills: Field::JSONB.with_options(advanced_view: {
+    #     'name'  => Field::String,
+    #     'years' => Field::Number.with_options(suffix: ' years')
+    #   })
+    # }),
+    # data: Field::JSONB.with_options(advanced_view: {
+    #   'titles' => Field::String,
+    #   'codes'  => Field::String,
+    # }),
+    data: Field::JSONB.with_options(transform: %i[to_h symbolize_keys], advanced_view: {
+      company:  Field::String,
+      position: Field::String,
+      skills: Field::JSONB.with_options(advanced_view: {
+        'name'  => Field::String,
+        'years' => Field::Number.with_options(suffix: ' years')
+      })
+    }),
     phyisical_appearence: Field::String.with_options(searchable: false),
     status: Field::Select.with_options(
       searchable: false,
@@ -115,6 +152,7 @@ class UserDashboard < Administrate::BaseDashboard
     agreed_to_terms
     role
   ].freeze
+  # password_confirmation
   # encrypted_password
   # reset_password_token
 
