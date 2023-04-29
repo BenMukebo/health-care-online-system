@@ -41,3 +41,4 @@ Run the following command from the root directory of your Rails application. Thi
 ```bin
 $ npx tailwindcss -i app/assets/stylesheets/application.css -o app/assets/stylesheets/wind.css --watch
 ```
+- [Administrate::Field::Jsonb](https://github.com/codica2/administrate-field-jsonb)

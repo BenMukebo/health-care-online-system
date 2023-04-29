@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'homes/index'
   namespace :admin do
     DashboardManifest::DASHBOARDS.each do |dashboard_resource|
       resources dashboard_resource
