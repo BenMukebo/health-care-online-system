@@ -12,7 +12,7 @@ class OrganizationDashboard < Administrate::BaseDashboard
     id: Field::Number,
     data: Field::Text.with_options(searchable: false),
     location: Field::String.with_options(searchable: false),
-    logo: Field::String,
+    logo: Field::ActiveStorage,
     name: Field::String,
     email: Field::Email,
     phone_number: Field::Password,
@@ -34,12 +34,11 @@ class OrganizationDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-    id
+    logo
     name
     data
     location
     status
-    logo
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -56,9 +55,9 @@ class OrganizationDashboard < Administrate::BaseDashboard
     phone_number
     status
     contracts
+    created_at
+    updated_at
   ].freeze
-  # created_at
-  # updated_at
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
