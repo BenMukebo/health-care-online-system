@@ -14,6 +14,7 @@ class HospitalDashboard < Administrate::BaseDashboard
     data: Field::Text.with_options(searchable: false),
     name: Field::String,
     email: Field::Email,
+    logo: Field::ActiveStorage,
     phone_number: Field::Password,
     register_number: Field::String,
     terms_of_service: Field::Text,
@@ -33,7 +34,7 @@ class HospitalDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-    id
+    logo
     name
     data
     address
@@ -45,6 +46,7 @@ class HospitalDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     name
+    logo
     data
     address
     terms_of_service
@@ -53,15 +55,16 @@ class HospitalDashboard < Administrate::BaseDashboard
     phone_number
     status
     contracts
+    created_at
+    updated_at
   ].freeze
-  # created_at
-  # updated_at
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     name
+    logo
     data
     address
     terms_of_service
