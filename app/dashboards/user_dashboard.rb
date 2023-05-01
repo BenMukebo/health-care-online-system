@@ -11,11 +11,12 @@ class UserDashboard < Administrate::BaseDashboard
     role: Field::BelongsTo,
     id: Field::Number,
     email: Field::Email,
-    password: Field::Password,
     first_name: Field::String,
     familly_name: Field::String,
     matricule_number: Field::String,
-    picture: Field::Url,
+    image: Field::ActiveStorage,
+    # picture: Field::Url,
+    password: Field::Password,
     phone: Field::String,
     bio: Field::Text,
     middle_name: Field::String,
@@ -63,6 +64,7 @@ class UserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    image
     first_name
     familly_name
     email
@@ -76,6 +78,7 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    image
     email
     phone
     first_name
@@ -101,6 +104,7 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    image
     first_name
     familly_name
     email
