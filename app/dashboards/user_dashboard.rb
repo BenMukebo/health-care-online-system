@@ -17,7 +17,7 @@ class UserDashboard < Administrate::BaseDashboard
     matricule_number: Field::String,
     picture: Field::Url,
     phone: Field::String,
-    bio: Field::String,
+    bio: Field::Text,
     middle_name: Field::String,
     marital_status: Field::Select.with_options(
       searchable: false,
@@ -28,10 +28,18 @@ class UserDashboard < Administrate::BaseDashboard
     gender: Field::Select.with_options(
       collection: User.genders.keys
     ),
-    # data: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
-    # address: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
     address: Field::String.with_options(searchable: false),
     data: Field::String.with_options(searchable: false),
+    # data: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
+    # address: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
+    # address: Field::JSONB.with_options(
+    #   fields: {
+    #     country: Field::String,
+    #     state: Field::String,
+    #     city: Field::String,
+    #     zip_code: Field::String
+    #   }
+    # ),
     phyisical_appearence: Field::String.with_options(searchable: false),
     status: Field::Select.with_options(
       searchable: false,
@@ -39,6 +47,7 @@ class UserDashboard < Administrate::BaseDashboard
                     field.resource.class.send(field.attribute.to_s.pluralize).keys
                   }
     ),
+    agreed_to_terms: Field::Boolean,
     encrypted_password: Field::String,
     remember_created_at: Field::DateTime,
     reset_password_sent_at: Field::DateTime,
@@ -76,6 +85,7 @@ class UserDashboard < Administrate::BaseDashboard
     encrypted_password
     matricule_number
     role
+    bio
     data
     address
     phyisical_appearence
@@ -98,9 +108,11 @@ class UserDashboard < Administrate::BaseDashboard
     phone
     marital_status
     gender
+    bio
     data
     address
     status
+    agreed_to_terms
     role
   ].freeze
   # encrypted_password
