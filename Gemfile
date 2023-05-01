@@ -24,10 +24,13 @@ gem 'administrate'
 
 gem 'administrate-field-active_storage' # , "0.1.8"
 
-gem 'devise'
+# To preview  Microsoft Office files as pictures you need to install activestorage-office-previewer by basecamp
+gem 'activestorage-office-previewer'
 
 # Set up Bullet
 gem 'bullet', group: :development
+
+gem 'devise'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails'
@@ -62,6 +65,12 @@ gem 'tailwindcss-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2" # mini_magick t
+
+# To preview pdf files you need to install mupdf or Poppler
+gem 'poppler'
+
+# To preview video files you need to install ffmpeg
+# gem install streamio-ffmpeg
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
