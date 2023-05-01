@@ -10,14 +10,15 @@ module Admin
     before_action :authenticate_user!
 
     def authenticate_admin
-      # TODO: Add authentification logic here
-      # if current_user.role.name == 'admin'
-      #   # Redirect to admin dashboard
-      #   redirect_to admin_dashboard_path
-      # else
-      #   # Redirect to user dashboard
-      #   redirect_to home
-      # end
+      # TODO: Add authentification
+     if current_user.role.name == 'admin'
+        # Redirect to admin dashboard
+        redirect_to admin_dashboard_path
+      else
+        # Redirect to user dashboard
+        redirect_to home_path
+      end
+
     end
 
     # Override this value to specify the number of elements to display at a time
