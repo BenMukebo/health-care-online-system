@@ -6,7 +6,7 @@ class CreateContracts < ActiveRecord::Migration[7.0]
       t.date :start_date
       t.date :end_date
       t.jsonb :terms_of_agreement, null: false, default: {}
-      # t.string :value
+      t.decimal :value
       t.integer :agreement_type
       t.integer :status, default: 0, null: false
       t.string :legal_document

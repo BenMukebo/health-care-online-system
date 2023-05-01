@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_22_131319) do
     t.date "start_date"
     t.date "end_date"
     t.jsonb "terms_of_agreement", default: {}, null: false
+    t.decimal "value"
     t.integer "agreement_type"
     t.integer "status", default: 0, null: false
     t.string "legal_document"
