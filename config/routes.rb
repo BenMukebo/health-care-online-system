@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :roles
     resources :organizations
     resources :hospitals
-    root to: "admin/roles#show"
+    root to: "roles#index"
   end
 
   root to: 'home#index'

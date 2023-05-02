@@ -17,12 +17,16 @@ class User < ApplicationRecord
 
   validates :first_name, :familly_name, presence: true, length: { maximum: 11 }
   validates :phone, uniqueness: true, length: { within: 10..16 }, allow_blank: true
-  validates :agreed_to_terms, presence: true, inclusion: { in: [true, false] }
+  # validates :agreed_to_terms, presence: true, inclusion: { in: [true, false] }
 
   # validates :data, presence: true, length: { maximum: 9 }
   # validates :address, presence: true, length: { maximum: 4 }
 
   private
+
+  def update_role(role_name)
+    self.role = Role.find_or_create_by(name: role_name).save!
+  end
 
   def set_default_role
     self.role = Role.find_or_create_by(name: 'guest') if role.nil?
