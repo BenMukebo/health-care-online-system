@@ -10,16 +10,15 @@ module Admin
     before_action :authenticate_user!
 
     def authenticate_admin
-      # TODO: Add authentification
-     if current_user.role.name == 'admin'
+      # Check if the user is logged in and has the 'admin' role we should change the user role to make admin
+      if current_user && current_user.role && current_user.role.name == 'admin'
         # Redirect to admin dashboard
         redirect_to admin_dashboard_path
       else
-        # Redirect to user dashboard
-        redirect_to home_path
+        redirect_to root_path, alert: "You don't have access to this page."
       end
-
     end
+
 
     # Override this value to specify the number of elements to display at a time
     # on index pages. Defaults to 20.
