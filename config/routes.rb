@@ -6,11 +6,17 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   namespace :admin do
-    resources :users
+    resources :users do
+      delete :image, on: :member, action: :destroy_image
+    end
     resources :roles
-    resources :organizations, only: [:index, :show, :edit, :update, :new, :create, :destroy]
-    resources :hospitals, only: [:index, :show, :edit, :update, :new, :create, :destroy]
-    resources :contracts
+    resources :organizations
+    resources :hospitals
+    resources :contracts do
+      delete :legal_documents, on: :member, action: :destroy_document
+    end
+
+    root to: "roles#index"
   end
 
   root to: "admin/users#index"

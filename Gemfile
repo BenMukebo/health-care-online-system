@@ -64,7 +64,7 @@ gem 'bootsnap', require: false
 gem 'tailwindcss-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2" # mini_magick t
+gem 'image_processing', '~> 1.2' # mini_magick t
 
 # To preview pdf files you need to install mupdf or Poppler
 gem 'poppler'
