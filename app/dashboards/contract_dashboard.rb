@@ -18,7 +18,7 @@ class ContractDashboard < Administrate::BaseDashboard
     end_date: Field::Date,
     hospital: Field::BelongsTo,
     start_date: Field::Date,
-    legal_document: Field::Url,
+    legal_documents: Field::ActiveStorage,
     organization: Field::BelongsTo,
     renewal_option: Field::Boolean,
     status: Field::Select.with_options(
@@ -56,7 +56,7 @@ class ContractDashboard < Administrate::BaseDashboard
     end_date
     organization
     hospital
-    legal_document
+    legal_documents
     renewal_option
     status
     terms_of_agreement
@@ -73,7 +73,7 @@ class ContractDashboard < Administrate::BaseDashboard
     agreement_type
     start_date
     end_date
-    legal_document
+    legal_documents
     renewal_option
     status
     terms_of_agreement
