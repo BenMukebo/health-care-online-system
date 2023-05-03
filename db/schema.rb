@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_01_103031) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_03_182051) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,7 +75,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_103031) do
     t.string "email"
     t.string "phone_number"
     t.string "register_number", limit: 8
-    t.string "logo"
     t.string "website"
     t.jsonb "data", default: {}, null: false
     t.jsonb "address", default: {}, null: false
@@ -95,7 +94,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_103031) do
     t.string "email"
     t.string "phone_number"
     t.string "register_number", limit: 8
-    t.string "logo"
     t.string "website"
     t.jsonb "data", default: {}, null: false
     t.jsonb "location", default: {}, null: false
@@ -128,7 +126,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_103031) do
     t.string "familly_name"
     t.string "middle_name"
     t.string "matricule_number", limit: 8
-    t.string "picture"
     t.string "phone"
     t.text "bio"
     t.integer "marital_status"
