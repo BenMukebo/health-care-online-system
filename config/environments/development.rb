@@ -3,6 +3,9 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # to true will overwrite any existing values (purging the old ones), and setting it to false will append the new values.
+  Rails.application.config.active_storage.replace_on_assign_to_many = false
+
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
