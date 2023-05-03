@@ -31,6 +31,11 @@
     <%= f.text_field :familly_name, autocomplete: "family_name" %>
   </div>
 
+<div class="field">
+  <%= f.check_box :agreed_to_terms %>
+  <%= f.label :agreed_to_terms, "terms & conditions" %>
+</div>
+
   <div class="actions">
     <%= f.submit "Sign up", data: {turbo: false} %>
   </div>
