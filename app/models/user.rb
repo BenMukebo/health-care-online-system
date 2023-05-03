@@ -35,7 +35,7 @@ class User < ApplicationRecord
   def admin?
     role.name == 'admin'
   end
-  
+
   def generate_matricule_number
     self.matricule_number = SecureRandom.random_number(10**8).to_s.rjust(8, '0')
   end

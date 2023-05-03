@@ -1,7 +1,6 @@
 # All Administrate controllers inherit from this
 # `Administrate::ApplicationController`, making it the ideal place to put
 # authentication logic or other before_actions.
-#
 # If you want to add pagination or other controller-level concerns,
 # you're free to overwrite the RESTful controller actions.
 module Admin
@@ -10,16 +9,12 @@ module Admin
     before_action :authenticate_user!
 
     def authenticate_admin
-      # Check if the user is logged in and has the 'admin' role we should change the user role to make admin
-      if current_user && current_user.role && current_user.role.name == 'admin'
-        # Redirect to admin dashboard
+      if current_user&.role&.name == 'admin'
         redirect_to admin_dashboard_path
       else
         redirect_to root_path, alert: "You don't have access to this page."
       end
     end
-
-
     # Override this value to specify the number of elements to display at a time
     # on index pages. Defaults to 20.
     # def records_per_page
