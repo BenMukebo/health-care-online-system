@@ -14,6 +14,7 @@ class UserDashboard < Administrate::BaseDashboard
     first_name: Field::String,
     familly_name: Field::String,
     matricule_number: Field::String,
+    # documents: Field::ActiveStorage,
     image: Field::ActiveStorage,
     # picture: Field::Url,
     password: Field::Password,

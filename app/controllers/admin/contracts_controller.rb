@@ -14,7 +14,6 @@ module Admin
       # redirect_back(fallback_location: requested_resource)
     end
 
-
     # For example, you may want to send an email after a foo is updated.
     #
     # def update
