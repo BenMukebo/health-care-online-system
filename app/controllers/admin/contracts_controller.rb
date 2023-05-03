@@ -9,9 +9,9 @@ module Admin
     #
     # **SECURITY NOTICE**: first verify whether current user is authorized to perform the action.
     def destroy_document
-      # legal_document = requested_resource.legal_documents.find(params[:attachment_id])
-      # legal_document.purge
-      # redirect_back(fallback_location: requested_resource)
+      legal_document = requested_resource.legal_documents.find(params[:attachment_id])
+      legal_document.purge
+      redirect_back(fallback_location: requested_resource)
     end
 
     # For example, you may want to send an email after a foo is updated.
