@@ -7,11 +7,6 @@ class ApplicationController < ActionController::Base
     # TODO: Implement logic for home page
   end
 
-  def logout
-    sign_out(current_user)
-    redirect_to root_path
-  end
-
   private
 
   def configure_permitted_parameters
