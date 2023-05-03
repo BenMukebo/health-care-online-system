@@ -15,7 +15,7 @@ class HospitalDashboard < Administrate::BaseDashboard
     name: Field::String,
     email: Field::Email,
     logo: Field::ActiveStorage,
-    phone_number: Field::Password,
+    phone_number: Field::String,
     register_number: Field::String,
     terms_of_service: Field::Text,
     status: Field::Select.with_options(
