@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_24_225611) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_22_131319) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,30 +33,40 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_24_225611) do
 
   create_table "hospitals", force: :cascade do |t|
     t.string "name", null: false
-    t.jsonb "address", default: {}, null: false
+    t.string "email"
+    t.string "phone_number"
+    t.string "register_number", limit: 8
+    t.string "logo"
+    t.string "website"
     t.jsonb "data", default: {}, null: false
+    t.jsonb "address", default: {}, null: false
+    t.text "terms_of_service"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_hospitals_on_address", using: :gin
     t.index ["data"], name: "index_hospitals_on_data", using: :gin
+    t.index ["email"], name: "index_hospitals_on_email"
     t.index ["name"], name: "index_hospitals_on_name"
     t.index ["status"], name: "index_hospitals_on_status"
   end
 
   create_table "organizations", force: :cascade do |t|
     t.string "name", null: false
-    t.string "logo"
+    t.string "email"
+    t.string "phone_number"
     t.string "register_number", limit: 8
+    t.string "logo"
+    t.string "website"
     t.jsonb "data", default: {}, null: false
     t.jsonb "location", default: {}, null: false
+    t.text "terms_of_service"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["data"], name: "index_organizations_on_data", using: :gin
     t.index ["location"], name: "index_organizations_on_location", using: :gin
     t.index ["name"], name: "index_organizations_on_name"
-    t.index ["register_number"], name: "index_organizations_on_register_number", unique: true
     t.index ["status"], name: "index_organizations_on_status"
   end
 
@@ -81,15 +91,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_24_225611) do
     t.string "matricule_number", limit: 8
     t.string "picture"
     t.string "phone"
-    t.string "bio"
+    t.text "bio"
     t.integer "marital_status"
     t.string "gender"
     t.jsonb "data", default: "{}", null: false
     t.jsonb "address", default: "{}", null: false
     t.jsonb "phyisical_appearence", default: "{}", null: false
-    t.string "privacy_policy"
+    t.boolean "agreed_to_terms"
     t.integer "status", default: 0, null: false
-    t.bigint "role_id", default: 1, null: false
+    t.bigint "role_id", null: false
     t.index ["address"], name: "index_users_on_address", using: :gin
     t.index ["data"], name: "index_users_on_data", using: :gin
     t.index ["email"], name: "index_users_on_email", unique: true
