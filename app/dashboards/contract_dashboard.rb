@@ -91,6 +91,11 @@ class ContractDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
+  # permitted for has_many_attached
+  def permitted_attributes
+    super + [legal_documents: []]
+  end
+
   # Overwrite this method to customize how contracts are displayed
   # across all pages of the admin dashboard.
   #
