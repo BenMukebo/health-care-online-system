@@ -2,9 +2,11 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  # Swict away the default value vips to  mini_magick
+  # config.action_storage.variant_processor = :mini_magick # (defaults) :vips  # :image_processing
 
   # to true will overwrite any existing values (purging the old ones), and setting it to false will append the new values.
-  Rails.application.config.active_storage.replace_on_assign_to_many = false
+  Rails.application.config.active_storage.replace_on_assign_to_many = true
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
