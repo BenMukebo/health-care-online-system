@@ -19,6 +19,11 @@ class ContractDashboard < Administrate::BaseDashboard
     hospital: Field::BelongsTo,
     start_date: Field::Date,
     legal_documents: Field::ActiveStorage,
+    # legal_documents: Field::ActiveStorage.with_options(
+    #   destroy_url: proc do |namespace, resource, attachment|
+    #     [:custom_legal_document_destroy, { attachment_id: attachment.id }]
+    #   end
+    # ),
     organization: Field::BelongsTo,
     renewal_option: Field::Boolean,
     status: Field::Select.with_options(

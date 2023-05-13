@@ -33,15 +33,6 @@ class UserDashboard < Administrate::BaseDashboard
     address: Field::String.with_options(searchable: false),
     data: Field::String.with_options(searchable: false),
     # data: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
-    # address: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
-    # address: Field::JSONB.with_options(
-    #   fields: {
-    #     country: Field::String,
-    #     state: Field::String,
-    #     city: Field::String,
-    #     zip_code: Field::String
-    #   }
-    # ),
     phyisical_appearence: Field::String.with_options(searchable: false),
     status: Field::Select.with_options(
       searchable: false,
