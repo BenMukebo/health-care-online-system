@@ -12,8 +12,8 @@ module Admin
       # binding.pry
       return if current_user&.super_admin?
 
-      flash[:alert] = 'You must be an admin to access this page.'
-      redirect_to root_path, alert: "You don't have access to this page."
+      flash[:alert] = 'You must be a super admin to access this page!'
+      redirect_to root_path, alert: 'Access denied to the super admin dashboard!'
     end
 
     # Override this value to specify the number of elements to display at a time
