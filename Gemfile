@@ -24,6 +24,8 @@ gem 'administrate'
 
 gem 'administrate-field-active_storage' # , "0.1.8"
 
+gem 'administrate-field-enum'
+
 # To preview  Microsoft Office files as pictures you need to install activestorage-office-previewer by basecamp
 gem 'activestorage-office-previewer'
 
