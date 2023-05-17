@@ -11,19 +11,14 @@ class OrganizationDashboard < Administrate::BaseDashboard
     contracts: Field::HasMany,
     id: Field::Number,
     data: Field::Text.with_options(searchable: false),
-    location: Field::String.with_options(searchable: false),
+    location: Field::String.with_options(searchable: true),
     logo: Field::ActiveStorage,
     name: Field::String,
     email: Field::Email,
     phone_number: Field::String,
     register_number: Field::String,
     terms_of_service: Field::Text,
-    status: Field::Select.with_options(
-      searchable: false,
-      collection: lambda { |field|
-                    field.resource.class.send(field.attribute.to_s.pluralize).keys
-                  }
-    ),
+    status: Field::Enum.with_options(searchable: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze

@@ -10,7 +10,7 @@ class HospitalDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     contracts: Field::HasMany,
     id: Field::Number,
-    address: Field::String.with_options(searchable: false),
+    address: Field::String.with_options(searchable: true),
     data: Field::Text.with_options(searchable: false),
     name: Field::String,
     email: Field::Email,
@@ -18,12 +18,7 @@ class HospitalDashboard < Administrate::BaseDashboard
     phone_number: Field::String,
     register_number: Field::String,
     terms_of_service: Field::Text,
-    status: Field::Select.with_options(
-      searchable: false,
-      collection: lambda { |field|
-                    field.resource.class.send(field.attribute.to_s.pluralize).keys
-                  }
-    ),
+    status: Field::Enum.with_options(searchable: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
