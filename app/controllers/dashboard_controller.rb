@@ -15,7 +15,7 @@ class DashboardController < ApplicationController
   
   def require_admin
     # binding.pry
-    unless current_user&.admin?
+    unless current_user&.admin? || current_user&.super_admin?
       flash[:alert] = "You must be an admin to access this page."
       redirect_to home_path
     end

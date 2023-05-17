@@ -5,16 +5,18 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
-    before_action :authenticate_admin
     before_action :authenticate_user!
+    before_action :authenticate_super_admin
 
-    def authenticate_admin
-      if current_user&.role&.name == 'admin'
-        redirect_to admin_dashboard_path
-      else
+    def authenticate_super_admin
+      # binding.pry
+      unless current_user&.super_admin?
+        flash[:alert] = "You must be an admin to access this page."
         redirect_to root_path, alert: "You don't have access to this page."
       end
     end
+    # redirect_to current_user&.role&.name == 'super_admin' ? admin_dashboard_path : root_path, alert: "You don't have access to this page."
+
     # Override this value to specify the number of elements to display at a time
     # on index pages. Defaults to 20.
     # def records_per_page
