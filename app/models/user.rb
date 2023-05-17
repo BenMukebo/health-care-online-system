@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
   belongs_to :role
 
-  after_initialize :set_default_role
-
+  after_initialize :set_default_role, if: :new_record?
   before_create :generate_matricule_number, unless: -> { matricule_number.present? }
   # before_validation :generate_matricule_number, on: :create
+
   # enum :marital_status, %i[single married midowed divorced separated].freeze
   enum marital_status: { single: 0, married: 1, midowed: 2, divorced: 3, separated: 4 }.freeze, _default: 0
   enum gender: { male: 'M', female: 'F' }.freeze
@@ -22,19 +22,19 @@ class User < ApplicationRecord
   # validates :data, presence: true, length: { maximum: 9 }
   # validates :address, presence: true, length: { maximum: 4 }
 
+  def admin?
+    self.role.name == 'super_admin'
+  end
+
   private
 
-  def update_role(role_name)
-    self.role = Role.find_or_create_by(name: role_name).save!
-  end
-
   def set_default_role
-    self.role = Role.find_or_create_by(name: 'guest') if role.nil?
+    self.role = Role.find_or_create_by(name: 'user') if role.nil?
   end
 
-  def admin?
-    role.name == 'admin'
-  end
+  # def update_role(role_name)
+  #   self.role = Role.find_or_create_by(name: role_name).save!
+  # end
 
   def generate_matricule_number
     self.matricule_number = SecureRandom.random_number(10**8).to_s.rjust(8, '0')
