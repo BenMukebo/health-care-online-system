@@ -9,12 +9,7 @@ class ContractDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    agreement_type: Field::Select.with_options(
-      searchable: false,
-      collection: lambda { |field|
-                    field.resource.class.send(field.attribute.to_s.pluralize).keys
-                  }
-    ),
+    agreement_type: Field::Enum,
     end_date: Field::Date,
     hospital: Field::BelongsTo,
     start_date: Field::Date,
@@ -27,7 +22,7 @@ class ContractDashboard < Administrate::BaseDashboard
     organization: Field::BelongsTo,
     renewal_option: Field::Boolean,
     status: Field::Select.with_options(
-      searchable: false,
+      searchable: true,
       collection: lambda { |field|
                     field.resource.class.send(field.attribute.to_s.pluralize).keys
                   }
@@ -104,7 +99,7 @@ class ContractDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how contracts are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(contract)
-  #   "Contract ##{contract.id}"
-  # end
+  def display_resource(contract)
+    "Contract ##{contract.id}"
+  end
 end
