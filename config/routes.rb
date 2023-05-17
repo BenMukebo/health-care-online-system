@@ -1,17 +1,22 @@
 Rails.application.routes.draw do
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  authenticated :user do
+    root 'dashboard#index', as: :authenticated_root
+  end
+
+  root to: 'home#index'
+  get 'home' => 'home#index'
+  get 'dashboard' => 'dashboard#index'
   get '/hospitals/new', to: 'hospitals#new'
 
-  # Defines the root path route ("/")
   # root "articles#index"
   namespace :admin do
     resources :users
     resources :roles
-    resources :organizations, only: [:index, :show, :edit, :update, :new, :create, :destroy]
-    resources :hospitals, only: [:index, :show, :edit, :update, :new, :create, :destroy]
-    resources :contracts
+    resources :organizations
+    resources :hospitals
+
+    root to: "roles#index"
   end
 
-  root to: "admin/users#index"
 end
