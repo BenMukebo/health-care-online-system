@@ -15,7 +15,7 @@
     <%= f.label :password, class: "font-semibold pb-2" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
@@ -40,7 +40,7 @@
 </div>
 
   <div class="submit-field flex flex-col w-11/12 md:w-1/2 my-2">
-    <%= f.submit "Sign up", data: {turbo: false}, class:"bg-blue-500 cursor-pointer text-white rounded p-2 font-bold" %>
+    <%= f.submit "Sign up", data: {turbo: false}, class:"bg-sky-500 cursor-pointer text-white rounded p-2 font-semibold" %>
   </div>
 <% end %>
 
