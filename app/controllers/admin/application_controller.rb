@@ -10,12 +10,11 @@ module Admin
 
     def authenticate_super_admin
       # binding.pry
-      unless current_user&.super_admin?
-        flash[:alert] = "You must be an admin to access this page."
-        redirect_to root_path, alert: "You don't have access to this page."
-      end
+      return if current_user&.super_admin?
+
+      flash[:alert] = 'You must be an admin to access this page.'
+      redirect_to root_path, alert: "You don't have access to this page."
     end
-    # redirect_to current_user&.role&.name == 'super_admin' ? admin_dashboard_path : root_path, alert: "You don't have access to this page."
 
     # Override this value to specify the number of elements to display at a time
     # on index pages. Defaults to 20.

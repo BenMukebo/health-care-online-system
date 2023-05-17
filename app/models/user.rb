@@ -23,11 +23,11 @@ class User < ApplicationRecord
   # validates :address, presence: true, length: { maximum: 4 }
 
   def admin?
-    self.role.name == 'admin'
+    role.name == 'admin'
   end
 
   def super_admin?
-    self.role.name == 'super_admin'
+    role.name == 'super_admin'
   end
 
   private

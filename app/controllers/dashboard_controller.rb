@@ -10,14 +10,14 @@ class DashboardController < ApplicationController
     # @top_locations = Location.joins(:organizations).group(:id).order("COUNT(organizations.id) DESC").limit(3)
     # @unpublished_organizations = current_user.organizations.where(status: :pending)
   end
-  
+
   private
-  
+
   def require_admin
     # binding.pry
-    unless current_user&.admin? || current_user&.super_admin?
-      flash[:alert] = "You must be an admin to access this page."
-      redirect_to home_path
-    end
+    return if current_user&.admin? || current_user&.super_admin?
+
+    flash[:alert] = 'You must be an admin to access this page.'
+    redirect_to home_path
   end
 end
