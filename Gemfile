@@ -36,6 +36,8 @@ gem 'bullet', group: :development
 
 gem 'devise'
 
+gem 'font-awesome-sass' # , '~> 5.15.4'
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails'
 
