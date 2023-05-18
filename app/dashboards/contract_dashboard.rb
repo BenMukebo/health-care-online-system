@@ -11,7 +11,8 @@ class ContractDashboard < Administrate::BaseDashboard
     id: Field::Number,
     agreement_type: Field::Enum,
     end_date: Field::Date,
-    hospital: Field::BelongsTo,
+    hospital: Field::BelongsToSearch.with_options(class_name: 'Hospital'),
+    organization: Field::BelongsToSearch.with_options(class_name: 'Organization'),
     start_date: Field::Date,
     legal_documents: Field::ActiveStorage,
     # legal_documents: Field::ActiveStorage.with_options(
@@ -19,7 +20,6 @@ class ContractDashboard < Administrate::BaseDashboard
     #     [:custom_legal_document_destroy, { attachment_id: attachment.id }]
     #   end
     # ),
-    organization: Field::BelongsTo,
     renewal_option: Field::Boolean,
     status: Field::Select.with_options(
       searchable: true,
