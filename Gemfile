@@ -21,9 +21,9 @@ gem 'puma', '~> 5.0'
 gem 'importmap-rails'
 
 gem 'administrate'
-
+# Extending Administrate with custom fields
 gem 'administrate-field-active_storage' # , "0.1.8"
-
+gem 'administrate-field-belongs_to_search'
 gem 'administrate-field-enum'
 
 # To preview  Microsoft Office files as pictures you need to install activestorage-office-previewer by basecamp
@@ -63,7 +63,7 @@ gem 'bootsnap', require: false
 # Use Sass to process CSS
 # gem "sassc-rails"
 
-gem 'tailwindcss-rails'
+gem 'tailwindcss-rails'#, "~> 2.0"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '~> 1.2' # mini_magick t
