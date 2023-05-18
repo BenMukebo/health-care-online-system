@@ -9,11 +9,13 @@
       class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4"
     >
       <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
-        <a
-          class="text-white text-sm uppercase hidden lg:inline-block font-semibold"
-          href="./index.html"
-          >Dashboard Name A
-        </a>
+      <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+        <h2 class="text-white text-sm uppercase hidden lg:inline-block font-semibold">
+          Hi, <%= current_user.first_name %>
+        </h2>
+        <br />
+        <p class="text-gray-950 mt-2"> #<%= current_user.role.name %> </p>
+      </div>
         <%= render "dashboard/shared/search" %>
 
         <%# Click profile image popup%>
