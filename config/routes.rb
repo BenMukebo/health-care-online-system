@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
-  # get '/hospitals/new', to: 'hospitals#new'
+  authenticated :user do
+    root 'dashboard#index', as: :authenticated_root
+  end
 
+  root to: 'home#index'
+  get 'home' => 'home#index'
+  get 'dashboard' => 'dashboard#index'
+  get '/hospitals/new', to: 'hospitals#new'
+
+  # root "articles#index"
   namespace :admin do
     resources :users do
         delete :image, on: :member, action: :destroy_image
@@ -20,5 +28,4 @@ Rails.application.routes.draw do
     root to: "roles#index"
   end
 
-  root to: "admin/users#index"
 end
