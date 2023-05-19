@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HealthCareOnlineSystem</title>
+    <title>Health Care Online System</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content= <%= t("header.app_description") %> >
+    <%= favicon_link_tag asset_path('logo.png') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <script src="https://kit.fontawesome.com/29d7bf5b00.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/9ef5f4f831.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%# <%= stylesheet_link_tag 'wind', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <script src="https://kit.fontawesome.com/29d7bf5b00.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/9ef5f4f831.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+    />
 
   </head>
 
