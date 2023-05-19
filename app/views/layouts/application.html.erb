@@ -4,7 +4,7 @@
     <title>Health Care Online System</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content= <%= t("header.app_description") %> >
-    <%= favicon_link_tag asset_path('logo.png') %>
+    <%= favicon_link_tag asset_path('logo.svg') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
@@ -23,11 +23,22 @@
 
   </head>
 
-  <body>
+  <body class="">
     <p class="notice" style="display: block;"><%= notice %></p>
     <p class="alert" style="display: block;"><%= alert %></p>
-    <main class="container w-full max-w-full bg-red mx-auto md:pt-8">
-      <%= yield %>
-    </main>
+    <% if !user_signed_in? %>
+      <%= render "devise/shared/auth_nav_menu" %>
+      <main>
+        <section class="absolute w-full h-full">
+          <%= yield %>
+          <%= render "devise/shared/footer" %>
+        </section>
+      </main>
+    <% else %>
+      <%= render "dashboard/shared/aside_menu" %>
+      <main class="container w-full max-w-full bg-red mx-auto">
+        <%= yield %>
+      </main>
+    <% end %>
   </body>
 </html>
