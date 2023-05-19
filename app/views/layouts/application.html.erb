@@ -27,7 +27,7 @@
     <p class="notice" style="display: block;"><%= notice %></p>
     <p class="alert" style="display: block;"><%= alert %></p>
     <% if !user_signed_in? %>
-      <%= render "devise/shared/auth_nav_menu" %>
+      <%= render "devise/shared/auth_navbar" %>
       <main>
         <section class="absolute w-full h-full">
           <%= yield %>
