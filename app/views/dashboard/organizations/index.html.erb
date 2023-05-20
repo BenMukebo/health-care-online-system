@@ -1,3 +1,5 @@
+<%= render "dashboard/shared/aside_menu" %>
+
 <section class="text-blueGray-700 antialiased">
   <noscript>You need to enable JavaScript to run this app.</noscript>
 
@@ -24,11 +26,9 @@
               <div class="items-center flex">
                 <span
                   class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full"
-                  ><img
-                    alt="..."
-                    class="w-full rounded-full align-middle border-none shadow-lg"
-                    src="./../../../assets/images/slogan.jpg"
-                /></span>
+                  >
+                  <%= image_tag current_user.image, alt: 'avatar', class: "w-full rounded-full align-middle border-none shadow-lg"%>
+                </span>
               </div>
             </a>
             <div
