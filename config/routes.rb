@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     root 'dashboard#index', as: :authenticated_root
   end
 
+  resources :users, only: [:index, :show, :update]
+
   # root "articles#index"
   namespace :admin do
     resources :users do
