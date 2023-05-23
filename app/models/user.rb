@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   belongs_to :role
 
+  has_one_attached :image
+  # has_many_attached :documents
+  # has_rich_text :biography
+
   after_initialize :set_default_role, if: :new_record?
   before_create :generate_matricule_number, unless: -> { matricule_number.present? }
   # before_validation :generate_matricule_number, on: :create

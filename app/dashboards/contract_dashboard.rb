@@ -9,20 +9,20 @@ class ContractDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    agreement_type: Field::Select.with_options(
-      searchable: false,
-      collection: lambda { |field|
-                    field.resource.class.send(field.attribute.to_s.pluralize).keys
-                  }
-    ),
+    agreement_type: Field::Enum,
     end_date: Field::Date,
-    hospital: Field::BelongsTo,
+    hospital: Field::BelongsToSearch.with_options(class_name: 'Hospital'),
+    organization: Field::BelongsToSearch.with_options(class_name: 'Organization'),
     start_date: Field::Date,
-    legal_document: Field::Url,
-    organization: Field::BelongsTo,
+    legal_documents: Field::ActiveStorage,
+    # legal_documents: Field::ActiveStorage.with_options(
+    #   destroy_url: proc do |namespace, resource, attachment|
+    #     [:custom_legal_document_destroy, { attachment_id: attachment.id }]
+    #   end
+    # ),
     renewal_option: Field::Boolean,
     status: Field::Select.with_options(
-      searchable: false,
+      searchable: true,
       collection: lambda { |field|
                     field.resource.class.send(field.attribute.to_s.pluralize).keys
                   }
@@ -56,7 +56,7 @@ class ContractDashboard < Administrate::BaseDashboard
     end_date
     organization
     hospital
-    legal_document
+    legal_documents
     renewal_option
     status
     terms_of_agreement
@@ -73,7 +73,7 @@ class ContractDashboard < Administrate::BaseDashboard
     agreement_type
     start_date
     end_date
-    legal_document
+    legal_documents
     renewal_option
     status
     terms_of_agreement
@@ -91,10 +91,15 @@ class ContractDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
+  # permitted for has_many_attached
+  def permitted_attributes
+    super + [legal_documents: []]
+  end
+
   # Overwrite this method to customize how contracts are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(contract)
-  #   "Contract ##{contract.id}"
-  # end
+  def display_resource(contract)
+    "Contract ##{contract.id}"
+  end
 end
