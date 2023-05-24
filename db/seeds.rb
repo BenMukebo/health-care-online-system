@@ -6,4 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 role = Role.find_or_create_by!(name: 'super_admin')
-super_user = User.create!(first_name: "Kangu", familly_name: "mamba", email: "kangu@gmail.com", password: "password", agreed_to_terms: true, role_id: role.id)
+super_admin = User.create!(first_name: "Kangu", familly_name: "mamba", email: "kangu@gmail.com", password: "password", agreed_to_terms: true, role_id: role.id)
+
+# Attach default image to the super_admin_user
+admin_image_path = Rails.root.join('app', 'assets', 'images', 'logo.svg')
+super_admin.image.attach(io: File.open(admin_image_path), filename: 'logo.svg')
