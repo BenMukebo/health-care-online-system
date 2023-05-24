@@ -1,22 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HealthCareOnlineSystem</title>
+    <title>Health Care Online System</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content= <%= t("header.app_description") %> >
+    <%= favicon_link_tag asset_path('logo.svg') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%# <%= stylesheet_link_tag 'wind', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'wind', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    
+    <script src="https://kit.fontawesome.com/29d7bf5b00.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/9ef5f4f831.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+    />
+
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
-    </main>
+  <body class="">
+    <p class="notice" style="display: block;"><%= notice %></p>
+    <p class="alert" style="display: block;"><%= alert %></p>
+    <% if !user_signed_in? %>
+    <%= render "devise/shared/auth_navbar" %>
+      <main>
+        <section class="absolute w-full h-full">
+          <%= yield %>
+          <%= render "devise/shared/footer" %>
+        </section>
+      </main>
+    <% else %>
+      <%#<%= render "dashboard/shared/aside_menu" %>
+      <main class="container w-full max-w-full mx-auto">
+        <%= yield %>
+      </main>
+    <% end %>
   </body>
 </html>

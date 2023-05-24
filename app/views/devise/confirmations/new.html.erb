@@ -1,16 +1,35 @@
-<h2>Resend confirmation instructions</h2>
+<div
+  class="absolute top-0 w-full h-full bg-gray-900"
+  style="background-image: url(./assets/img/register_bg_2.png); background-size: 100%; background-repeat: no-repeat;"
+></div>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="container mx-auto px-4 h-full">
+  <div class="flex content-center items-center justify-center h-full">
+    <div class="w-full lg:w-8/12 xl:w-6/12 2xl:max-w-2xl px-4">
+      <div
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-0"
+      >      
+        <div class="flex-auto px-6 lg:px-10 py-10">
+          <h6 class="text-gray-600 text-sm font-bold text-center mb-3">Resend confirmation instructions</h6>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+          <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+  
+            <div class="relative w-full mb-3">
+              <%= f.label :email, class: "block uppercase text-gray-700 text-xs font-bold mb-2" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), placeholder: "Email", class: "border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full", style: "transition: all 0.15s ease 0s;" %>
+
+            </div>
+
+            <div class="actions text-center mt-6">
+              <%= f.submit "Resend confirmation instructions", class:"bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full", style: "transition: all 0.15s ease 0s;" %>
+            </div>
+          <% end %>
+          
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+</div>

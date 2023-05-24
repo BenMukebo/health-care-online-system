@@ -30,4 +30,45 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  header:
+    app_title: "The Health care online system"
+    app_description: "This system will be design to help facilitate the acceptance of medical treatment of people (workers and their dependents) if approved by the organization."
+  flash:
+    companies:
+      no_results: "No companiess match your search."
+    pundit:
+      unauthorized: "You are not authorized to perform this action."
+  session:
+    new:
+      title: "Sign in"
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      forgot_password: "Forgot password?"
+  companies:
+    index:
+      description: 'Anity Jobs helps you quickly find a job anywhere in Africa.'
+      preview:
+        featured: 'Featured'
+        new: 'New'
+      search:
+        placeholder: 'Search company by title, location, company...'
+        title: 'Search companies'
+        search_button: 'Search'
+    show:
+      category: 'Category'
+    new:
+      create_company: 'Create Company'
+      labels:
+        name: 'Name'
+        description: 'Description'
+        create_company: 'Create Company'
+  navigation:
+    logo: 'khs'
+    organization: 'organizations'
+    hospitals: 'Hospitals'
+    employees: 'Employees'
+    community: 'Community'
+    get_in_touch: 'Get in touch'
+
+
+
