@@ -8,6 +8,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'wind', media: 'all', 'data-turbolinks-track': 'reload' %>
+
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -36,7 +38,7 @@
       </main>
     <% else %>
       <%#<%= render "dashboard/shared/aside_menu" %>
-      <main class="container w-full max-w-full bg-red mx-auto">
+      <main class="container w-full max-w-full mx-auto bg-[#red]">
         <%= yield %>
       </main>
     <% end %>

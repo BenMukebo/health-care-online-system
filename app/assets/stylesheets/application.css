@@ -13,7 +13,43 @@
  *= require_tree .
  *= require_self
  */
+/* @import "font-awesome-sprockets";
+@import "font-awesome"; */
 
-/* @tailwind base;
+/* :root {
+  --size-border: 2px solid var(--text-color);
+  --box-border: 2px solid var(--shadow-color);
+  --box-hover: 1px solid var(--primary-color);
+  --bacground-color: #e5e5e5;
+  --primary-color: #298cfc33;
+  --btn-color: #5fb523;
+  --secondary-color: #02428b;
+  --text-color: #434b54;
+  --bg-color: #0372ef42;
+  --on-secondary: #fff;
+  --shadow-color: #f1f1f2;
+} */
+
+/* * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+} */
+
+/* *,
+*::before,
+*::after {
+  box-sizing: border-box;
+} */
+
+/* body {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bacground-color);
+} */
+
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
