@@ -347,7 +347,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   pg (~> 1.1)
-  poppler (~> 3.0, >= 3.0.7)
+  poppler
   pry
   puma (~> 5.0)
   pundit (~> 2.3)
