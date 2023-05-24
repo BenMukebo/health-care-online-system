@@ -338,7 +338,7 @@ PLATFORMS
 
 DEPENDENCIES
   activestorage-office-previewer
-  administrate
+  administrate (~> 0.18.0)
   administrate-field-active_storage
   administrate-field-belongs_to_search
   administrate-field-enum

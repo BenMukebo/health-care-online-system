@@ -22,7 +22,8 @@ gem 'pry'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 
-gem 'administrate'
+# gem 'administrate'
+gem 'administrate', '~> 0.18.0'
 # Extending Administrate with custom fields
 gem 'administrate-field-active_storage' # , "0.1.8"
 gem 'administrate-field-belongs_to_search'
