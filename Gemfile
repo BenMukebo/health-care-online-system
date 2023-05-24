@@ -75,7 +75,8 @@ gem 'tailwindcss-rails' # , "~> 2.0"
 gem 'image_processing', '~> 1.2' # mini_magick t
 
 # To preview pdf files you need to install mupdf or Poppler
-gem 'poppler'
+gem 'poppler', '~> 3.0', '>= 3.0.7'
+gem 'gobject-introspection', '~> 4.1', '>= 4.1.6'
 
 # To preview video files you need to install ffmpeg
 # gem install streamio-ffmpeg
