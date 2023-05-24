@@ -29,7 +29,7 @@
     <p class="notice" style="display: block;"><%= notice %></p>
     <p class="alert" style="display: block;"><%= alert %></p>
     <% if !user_signed_in? %>
-      <%= render "devise/shared/auth_navbar" %>
+    <%= render "devise/shared/auth_navbar" %>
       <main>
         <section class="absolute w-full h-full">
           <%= yield %>
@@ -38,15 +38,9 @@
       </main>
     <% else %>
       <%#<%= render "dashboard/shared/aside_menu" %>
-      <main class="container w-full max-w-full mx-auto bg-[#red]">
+      <main class="container w-full max-w-full mx-auto">
         <%= yield %>
       </main>
     <% end %>
   </body>
-  <script>
-  function toggleNavbar(collapseID) {
-    document.getElementById(collapseID).classList.toggle("hidden");
-    document.getElementById(collapseID).classList.toggle("block");
-  }
-</script>
 </html>
