@@ -1,6 +1,6 @@
 require 'administrate/base_dashboard'
 
-class HospitalDashboard < Administrate::BaseDashboard
+class OrganizationDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,11 +10,11 @@ class HospitalDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     contracts: Field::HasMany,
     id: Field::Number,
-    address: Field::String.with_options(searchable: true),
     data: Field::Text.with_options(searchable: false),
+    location: Field::String.with_options(searchable: true),
+    logo: Field::ActiveStorage,
     name: Field::String,
     email: Field::Email,
-    logo: Field::ActiveStorage,
     phone_number: Field::String,
     register_number: Field::String,
     terms_of_service: Field::Text,
@@ -32,7 +32,7 @@ class HospitalDashboard < Administrate::BaseDashboard
     logo
     name
     data
-    address
+    location
     status
   ].freeze
 
@@ -43,7 +43,7 @@ class HospitalDashboard < Administrate::BaseDashboard
     name
     logo
     data
-    address
+    location
     terms_of_service
     register_number
     email
@@ -61,7 +61,7 @@ class HospitalDashboard < Administrate::BaseDashboard
     name
     logo
     data
-    address
+    location
     terms_of_service
     status
     register_number
@@ -81,11 +81,10 @@ class HospitalDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how hospitals are displayed
+  # Overwrite this method to customize how organizations are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(hospital)
-    #   "Hospital ##{hospital.id}"
-    hospital.name
+  def display_resource(organization)
+    organization.name
   end
 end

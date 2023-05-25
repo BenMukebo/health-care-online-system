@@ -1,20 +1,8 @@
 module Admin
-  class UsersController < Admin::ApplicationController
+  class OrganizationsController < Admin::ApplicationController
     # Overwrite any of the RESTful controller actions to implement custom behavior
-    # def scoped_resource
-    #   resource_class.with_attached_documents
-    # end
-
-    # For illustrative purposes only.
-    #
-    # **SECURITY NOTICE**: first verify whether current user is authorized to perform the action.
-    def destroy_image
-      image = requested_resource.image
-      image.purge
-      redirect_back(fallback_location: requested_resource)
-    end
-
     # For example, you may want to send an email after a foo is updated.
+    #
     # def update
     #   super
     #   send_foo_updated_email(requested_resource)

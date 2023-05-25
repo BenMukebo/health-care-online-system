@@ -1,7 +1,7 @@
-class Hospital < ApplicationRecord
-  # has_many :users
+class Organization < ApplicationRecord
+  # has_many :users, dependent: :destroy
   has_many :contracts, dependent: :destroy
-  has_many :organizations, through: :contracts # , dependent: :destroy
+  has_many :hospitals, through: :contracts # , dependent: :destroy
 
   has_one_attached :logo
   has_rich_text :description
@@ -11,7 +11,4 @@ class Hospital < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates_presence_of :status
   validates_uniqueness_of :email, :phone_number, :register_number, allow_blank: true
-
-  # validates :data, presence: true, length: { maximum: 9 }
-  # validates :address, presence: true, length: { maximum: 4 }
 end

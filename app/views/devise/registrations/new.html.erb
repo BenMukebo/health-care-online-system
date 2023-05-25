@@ -1,23 +1,26 @@
-<h2>Sign up</h2>
+<div id="clearance text-center" class="sign-in w-full md:w-1/2 mx-auto">
+
+  <h2 class="text-xl font-bold mb-4">Sign up Page</h2>
+  <hr />
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
+  <div class="password-field field flex flex-col w-11/12 md:w-1/2 mt-4 mb-6">
+    <%= f.label :email, class: "font-semibold pb-2" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="password-field field flex flex-col w-11/12 md:w-1/2 mt-4 mb-6">
+    <%= f.label :password, class: "font-semibold pb-2" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
+  <div class="password-field field flex flex-col w-11/12 md:w-1/2 mt-4 mb-6">
+    <%= f.label :password_confirmation, class: "font-semibold pb-2" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
   
@@ -46,9 +49,26 @@
     <% end %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up", data: {turbo: false} %>
+  <div class="password-field field flex flex-col w-11/12 md:w-1/2 mt-4 mb-6">
+    <%= f.label :first_name, class: "font-semibold pb-2" %>
+    <%= f.text_field :first_name, autocomplete: "first_name" %>
+  </div>
+
+  <div class="password-field field flex flex-col w-11/12 md:w-1/2 mt-4 mb-6">
+    <%= f.label :familly_name, class: "font-semibold pb-2" %>
+    <%= f.text_field :familly_name, autocomplete: "family_name" %>
+  </div>
+
+<div class="field font-semibold pb-4">
+  <%= f.check_box :agreed_to_terms %>
+  <%= f.label :agreed_to_terms, "terms & conditions", class: "font-semibold pb-2" %>
+</div>
+
+  <div class="submit-field flex flex-col w-11/12 md:w-1/2 my-2">
+    <%= f.submit "Sign up", data: {turbo: false}, class:"bg-sky-500 cursor-pointer text-white rounded p-2 font-semibold" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>

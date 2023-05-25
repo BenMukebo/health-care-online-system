@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class HospitalTest < ActiveSupport::TestCase
+class OrganizationTest < ActiveSupport::TestCase
   should have_many(:contracts)
-  should have_many(:organizations).through(:contracts)
+  should have_many(:hospitals).through(:contracts)
 
   should validate_presence_of(:name, :status)
   should validate_uniqueness_of(:name)

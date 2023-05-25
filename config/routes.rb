@@ -4,12 +4,32 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # get 'signup', to: 'users#signup'
 
-  # Defines the root path route ("/")
+  authenticated :user do
+    root 'dashboard#index', as: :authenticated_root
+  end
+
+  root to: 'home#index'
+  get 'home' => 'home#index'
+  get 'dashboard' => 'dashboard#index'
+  get '/hospitals/new', to: 'hospitals#new'
+
   # root "articles#index"
   namespace :admin do
-    resources :users
+    resources :users do
+        delete :image, on: :member, action: :destroy_image
+    end
+    
     resources :roles
-    resources :hospitals, only: [:index, :show, :edit, :update, :new, :create, :destroy]
+    resources :organizations
+    resources :hospitals
+    resources :contracts do
+      delete :legal_documents, on: :member, action: :destroy_document
+    end
+
+    # delete :custom_user_image_destroy, to: 'users#destroy_image'
+    # delete :custom_legal_document_destroy, to: 'users#destroy_legal_document'
+
+    root to: "roles#index"
   end
 
   root to: "home#home"

@@ -91,3 +91,7 @@ production:
   database: health_care_online_system_production_1
   # username: health_care_online_system
   # password: <%= ENV["HEALTH_CARE_ONLINE_SYSTEM_DATABASE_PASSWORD"] %>
+
+  database: health_care_online_system_production
+  username: health_care_online_system
+  # password: <%= ENV["HEALTH_CARE_ONLINE_SYSTEM_DATABASE_PASSWORD"] %>
