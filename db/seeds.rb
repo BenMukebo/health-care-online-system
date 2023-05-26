@@ -61,5 +61,19 @@ if Rails.env.development?
     )
   end
 
+  puts '----------------------CONTRACTS---------------------------'
+
+  RANGE = (1..10).to_a.freeze
+  TYPE = ["service", "purchase", "lease", "licensing", "non_disclosure", "memorandum"].freeze
+
+  10.times do |i|
+    Contract.create!(
+      organization_id: RANGE.sample, hospital_id: rand(1..5), status: rand(0..3),
+      start_date: Faker::Date.between(from: 2.days.ago, to: Date.today), end_date: Faker::Date.between(from: Date.today, to: 2.days.from_now),
+      value: Faker::Number.between(from: 1000, to: 10000),
+      terms_of_agreement: TYPE.sample,
+      agreement_type: rand(0..2)
+    )
+  end
 
 end
