@@ -34,4 +34,20 @@ if Rails.env.development?
     )
   end
 
+  puts '----------------------ORGANIZATIONS---------------------------'
+
+  25.times do |i|
+    Organization.create!(
+      name: Faker::Company.unique.name, email: Faker::Internet.unique.email, status: rand(0..2),
+      register_number: Faker::Company.unique.french_siren_number[4..8], website: Faker::Internet.unique.url,
+      # register_number: Faker::UniqueGenerator.clear,
+      phone_number: Faker::PhoneNumber.cell_phone, terms_of_service: Faker::Company.catch_phrase,
+      location: { country: Faker::Address.country, city: Faker::Address.city, street: Faker::Address.street_address },
+
+      # terms_of_service: Faker::Lorem.paragraph(sentence_count: 3),
+      # user_id: user5.id, category_id: rand(1..2)
+    )
+  end
+
+
 end
