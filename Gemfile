@@ -38,6 +38,9 @@ gem 'devise'
 
 gem 'font-awesome-sass' # , '~> 5.15.4'
 
+gem 'faker'
+# gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails'
 
