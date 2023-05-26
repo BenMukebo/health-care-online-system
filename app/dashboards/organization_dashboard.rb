@@ -8,6 +8,7 @@ class OrganizationDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    users: Field::HasMany,
     contracts: Field::HasMany,
     id: Field::Number,
     data: Field::Text.with_options(searchable: false),
@@ -52,6 +53,7 @@ class OrganizationDashboard < Administrate::BaseDashboard
     contracts
     created_at
     updated_at
+    users
   ].freeze
 
   # FORM_ATTRIBUTES
