@@ -9,6 +9,8 @@ class UserDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     role: Field::BelongsTo,
+    hospital: Field::BelongsToSearch.with_options(class_name: 'Hospital'),
+    organization: Field::BelongsToSearch.with_options(class_name: 'Organization'),
     id: Field::Number,
     email: Field::Email,
     first_name: Field::String,
@@ -58,10 +60,8 @@ class UserDashboard < Administrate::BaseDashboard
     id
     image
     first_name
-    familly_name
     email
     marital_status
-    address
     role
     status
   ].freeze
@@ -79,6 +79,8 @@ class UserDashboard < Administrate::BaseDashboard
     gender
     encrypted_password
     matricule_number
+    hospital
+    organization
     role
     bio
     data
@@ -109,6 +111,8 @@ class UserDashboard < Administrate::BaseDashboard
     address
     status
     agreed_to_terms
+    hospital
+    organization
     role
   ].freeze
   # encrypted_password
