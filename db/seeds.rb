@@ -49,5 +49,17 @@ if Rails.env.development?
     )
   end
 
+  puts '----------------------HOSPITALS---------------------------'
+
+  15.times do |i|
+    Hospital.create!(
+      name: Faker::Science.unique.element, status: rand(0..2),
+      register_number: Faker::NationalHealthService.unique.british_number[4..8], website: Faker::Internet.unique.url,
+      phone_number: Faker::PhoneNumber.cell_phone, terms_of_service: Faker::Markdown.ordered_list,
+      address: { country: Faker::Address.country, city: Faker::Address.city, street: Faker::Address.street_address },
+      data: { body_temperature: Faker::Number.between(from: 36.0, to: 37.5), blood_pressure: Faker::Number.between(from: 80, to: 120), heart_rate: Faker::Number.between(from: 60, to: 100) },
+    )
+  end
+
 
 end
