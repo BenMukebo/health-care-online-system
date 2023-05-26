@@ -1,30 +1,82 @@
-<div id="clearance text-center" class="sign-in w-full md:w-1/2 mx-auto">
-  <h2 class="text-xl font-bold mb-4">Login Page</h2>
-  <hr/>
+<div
+  class="absolute top-0 w-full h-full bg-gray-900"
+  style="background-image: url(./assets/img/register_bg_2.png); background-size: 100%; background-repeat: no-repeat;"
+></div>
+<div class="container mx-auto px-4 h-full">
+  <div class="flex content-center items-center justify-center h-full">
+    <div class="w-full lg:w-8/12 xl:w-6/12 2xl:max-w-2xl px-4">
+    <%#<%#w-full lg:w-5/12 px-4%> %>
+      <div
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-0"
+      >
+        <div class="rounded-t mb-0 px-6 py-6">
+          <div class="text-center mb-3">
+            <h6 class="text-gray-600 text-sm font-bold"> Sign in with</h6>
+          </div>
+          <div class="btn-wrapper text-center">
+            <button
+              class="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
+              type="button"
+              style="transition: all 0.15s ease 0s;"
+            >
+              <%= image_tag 'github.svg', alt: 'github', class: "w-5 mr-1" %>
+              Github
+            </button>
+            <button
+              class="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
+              type="button"
+              style="transition: all 0.15s ease 0s;"
+            >
+            <%= image_tag 'google.svg', alt: 'google', class: "w-5 mr-1" %>
+            Google
+            </button>
+          </div>
+          <hr class="mt-6 border-b-1 border-gray-400" />
+        </div>
+        <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+          <div class="text-gray-500 text-center mb-3 font-bold">
+            <small>Or sign in with credentials</small>
+          </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="text-field field flex flex-col w-11/12 md:w-1/2 mt-4 mb-9">
-    <%= f.label :email, class: "font-semibold pb-4 " %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="relative w-full mb-3">
+              <%= f.label :email, class: "block uppercase text-gray-700 text-xs font-bold mb-2" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full", style: "transition: all 0.15s ease 0s;" %>
+            </div>
 
-  <div class="password-field field flex flex-col w-11/12 md:w-1/2 mt-4 mb-9">
-    <%= f.label :password, class: "font-semibold pb-4" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+            <div class="relative w-full mb-3">
+              <%= f.label :password, class: "block uppercase text-gray-700 text-xs font-bold mb-2" %>
+              <%= f.password_field :password, autocomplete: "current-password",  placeholder: "Password", class: "border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full", style: "transition: all 0.15s ease 0s;" %>
+            </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field my-4">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+            <% if devise_mapping.rememberable? %>
+            <div  class="inline-flex items-center cursor-pointer">
+              <%= f.check_box :remember_me, class: "form-checkbox border-0 rounded text-gray-800 ml-1 w-5 h-5", style: "transition: all 0.15s ease 0s;" %>
+              <%= f.label :remember_me, class: "ml-2 text-sm font-semibold text-gray-700" %>
+            </div>
+            <% end %>
+
+            <div class="text-center mt-6">
+              <%= f.submit "Sign In", data: {turbo: false}, class:"bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full", style: "transition: all 0.15s ease 0s;" %>
+            </div>
+          <% end %>
+
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap mt-6">
+        <div class="w-1/2">
+          <a href="#pablo" class="text-gray-300"
+            ><small>Forgot password?</small></a
+          >
+        </div>
+        <div class="w-1/2 text-right">
+          <a href="#pablo" class="text-gray-300"
+            ><small>Create new account</small></a
+          >
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="submit-field flex flex-col w-11/12 md:w-1/2 my-2">
-    <%= f.submit "Log in", data: {turbo: false}, class:"bg-sky-500 cursor-pointer text-white rounded p-2 font-bold" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
 </div>
