@@ -1,5 +1,5 @@
 class Hospital < ApplicationRecord
-  # has_many :users
+  has_many :users
   has_many :contracts, dependent: :destroy
   has_many :organizations, through: :contracts # , dependent: :destroy
 
