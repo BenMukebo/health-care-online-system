@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :role
+  belongs_to :organization, optional: true
+  belongs_to :hospital, optional: true
 
   has_one_attached :image
   # has_many_attached :documents
