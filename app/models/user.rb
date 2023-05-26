@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   # enum :marital_status, %i[single married midowed divorced separated].freeze
   enum marital_status: { single: 0, married: 1, midowed: 2, divorced: 3, separated: 4 }.freeze, _default: 0
-  enum gender: { male: 'M', female: 'F' }.freeze
+  enum gender: { Male: 'M', Female: 'F' }.freeze
   enum status: { inactive: 0, active: 1, rest: 2 }.freeze, _default: 0
 
   validates :first_name, :familly_name, presence: true, length: { maximum: 11 }
