@@ -34,6 +34,7 @@ class OrganizationDashboard < Administrate::BaseDashboard
     logo
     name
     email
+    phone_number
     status
   ].freeze
 
