@@ -1,7 +1,7 @@
 class Role < ApplicationRecord
   has_many :users
 
-  NAME = %i[user client employee manager admin super_admin].freeze
+  NAME = %i[super_admin admin user employee manager client].freeze
   enum name: NAME.freeze, _default: 'user'
 
   validates :name, presence: true, uniqueness: true

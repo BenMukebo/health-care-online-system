@@ -1,5 +1,5 @@
 class Organization < ApplicationRecord
-  # has_many :users, dependent: :destroy
+  has_many :users
   has_many :contracts, dependent: :destroy
   has_many :hospitals, through: :contracts # , dependent: :destroy
 
