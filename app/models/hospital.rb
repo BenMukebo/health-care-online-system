@@ -1,4 +1,5 @@
 class Hospital < ApplicationRecord
+  include Validatable
   has_many :users
   has_many :contracts, dependent: :destroy
   has_many :organizations, through: :contracts # , dependent: :destroy
@@ -7,11 +8,4 @@ class Hospital < ApplicationRecord
   has_rich_text :description
 
   enum status: { inactive: 0, active: 1, under_investigation: 2 }.freeze
-
-  validates :name, presence: true, uniqueness: true
-  validates_presence_of :status
-  validates_uniqueness_of :email, :phone_number, :register_number, allow_blank: true
-
-  # validates :data, presence: true, length: { maximum: 9 }
-  # validates :address, presence: true, length: { maximum: 4 }
 end
