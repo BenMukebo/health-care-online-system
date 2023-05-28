@@ -1,0 +1,52 @@
+<div id="<%= dom_id healthcare_request %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= healthcare_request.title %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= healthcare_request.description %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Received:</strong>
+    <%= healthcare_request.received %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Valided:</strong>
+    <%= healthcare_request.valided %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Data:</strong>
+    <%= healthcare_request.data %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Status:</strong>
+    <%= healthcare_request.status %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">User:</strong>
+    <%= healthcare_request.user_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Organization:</strong>
+    <%= healthcare_request.organization_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Hospital:</strong>
+    <%= healthcare_request.hospital_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this healthcare request", healthcare_request, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this healthcare request', edit_healthcare_request_path(healthcare_request), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
