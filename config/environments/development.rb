@@ -56,6 +56,8 @@ end
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  config.hotwire_livereload.listen_paths << Rails.root.join("app/assets/stylesheets")
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
