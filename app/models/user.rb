@@ -21,12 +21,15 @@ class User < ApplicationRecord
   enum gender: { Male: 'M', Female: 'F' }.freeze
   enum status: { inactive: 0, active: 1, rest: 2 }.freeze, _default: 0
 
+  validates :email, uniqueness: { case_sensitive: false },
+                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :first_name, :familly_name, presence: true, length: { maximum: 11 }
-  validates :phone, uniqueness: true, length: { within: 10..16 }, allow_blank: true
+  # validates :password, presence: true, on: :create
+  # validates :password, length: { in: 6..128 }, on: :update, allow_blank: true
+  validates :phone, uniqueness: true, length: { within: 10..16 }
   validates :agreed_to_terms, presence: true, inclusion: { in: [true, false] }
-
+  # validates :address, presence: true, length: { maximum: 5 }
   # validates :data, presence: true, length: { maximum: 9 }
-  # validates :address, presence: true, length: { maximum: 4 }
 
   def admin?
     role.name == 'admin'
