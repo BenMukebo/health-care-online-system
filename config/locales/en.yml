@@ -31,8 +31,8 @@
 
 en:
   header:
-    app_title: "The Health care online system"
-    app_description: "This system will be design to help facilitate the acceptance of medical treatment of people (workers and their dependents) if approved by the organization."
+    page_title: "Kanku Health System"
+    app_description: "Kanku Health care online service is a system designed to help facilitate the acceptance of medical treatment of people (workers and their dependents) if approved by the organization."
   flash:
     companies:
       no_results: "No companiess match your search."

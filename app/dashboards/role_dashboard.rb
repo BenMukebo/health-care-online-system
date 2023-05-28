@@ -35,9 +35,9 @@ class RoleDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     name
-    users
     created_at
     updated_at
+    users
   ].freeze
 
   # FORM_ATTRIBUTES
