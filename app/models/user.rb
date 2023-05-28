@@ -7,6 +7,7 @@ class User < ApplicationRecord
   belongs_to :role
   belongs_to :organization, optional: true
   belongs_to :hospital, optional: true
+  has_many :healthcare_requests#, dependent: :destroy
 
   has_one_attached :image
   # has_many_attached :documents
