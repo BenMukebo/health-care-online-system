@@ -1,5 +1,7 @@
 <% provide(:title, "sign-up") %>
+<%= render "devise/shared/auth_navbar" %>
 
+<section class="absolute w-full h-full">
 <div
   class="absolute top-0 w-full h-full bg-gray-900"
   style="background-image: url(./assets/img/register_bg_2.png); background-size: 100%; background-repeat: no-repeat;"
@@ -72,3 +74,6 @@
     </div>
   </div>
 </div>
+
+<%= render "devise/shared/footer" %>
+</section>
