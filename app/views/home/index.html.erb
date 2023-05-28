@@ -1,46 +1,157 @@
-<% provide(:title, "Home") %>
+<div class="home-container w-screen flex flex-col items-center">
+<%= render "header/header" %>
 
-<div
-class="relative pt-16 pb-32 flex content-center items-center justify-center bg-gray-900"
-style="min-height: 75vh;"
->
-<div
-  class="absolute top-16 w-full h-full bg-center bg-cover bg-blueGray-50"
-  style='background-image: url("");'
->
+  <section class="hero w-full flex flex-col items-center" id="home">
+    <div class="first-container w-full flex flex-col ml-16 mt-20">
+      <div class="first-block flex items-center gap-12 ml-28 mb-6 pr-2 font-bold">
+        <h2 class="text-6xl">Keep your time</h2>
+        <img class="drop-shadow-lg" src="../../assets/old_women.png" alt="old women smiling">
+      </div>
+      <div class="second-block flex ml-1 gap-9 mt-1 font-bold">
+        <img class="drop-shadow-lg" src="../../assets/kids.png" alt="kids smiling">
+        <h2 class="text-6xl">Stay Healthy</h2>
+      </div>
+    </div>
 
-<div class="relative md:ml-64 bg-blueGray-50 md:mw-[100% - 16rem] w-full h-full  bg-slate-100">
-  <h1 class="text-5xl">Welcome to the home page</h1>
-  <br />
-  
-  <%#<% if user_signed_in? %>
-  <% if current_user %>
-    <p class="py-4 text-lg" > Hello you're logged in as: <%= current_user.email %>!</p>
-    <p class="py-4 text-md"> Your role is: 
-      <span class="text-sky-500"><%= current_user.role.name %>! </span>
-      <% if current_user.role.name == 'super_admin' %>
-        <%= link_to "Go the the bashbord", admin_root_path, class:"underline font-bold mx-2" %>
-      <% end %>
-      </p>
-    <p>
-      You have successfully authenticated your account.
-      You are now ready to interact with this application.
-    </p>
-    <div class="flex py-4 gap-3">
-      <%= link_to "Edit profile", edit_user_registration_path, class:"underline font-semibold p-2" %>
-      <span class="text-orange-500 font-semibold p-2">
-        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-      </span>
-      <%#<%= link_to "Sign out", destroy_user_session_path, 'data-turbo-method': :delete %>
-      <%#<%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: "delete" } %>
+    <p class="mt-24 w-6/12 p-2 mb-1 text-xl text-center">At the same time , the  first  insurance   schema for the underwriting of business ventures became available of the insurance </p>
+
+    <img class="mt-10" src="../../assets/table_people.jpg" alt="Smiling people sitting around a table"/>
+    <div class="bg-white -mt-8 flex items-center rounded mb-9">
+      <img  src="../../assets/partners.png" alt="partners logos"/>
     </div>
-  <% else %>
-    <p>You are not logged in.</p>
-    <div class="flex py-4">
-      <%= link_to "Sign up!", new_user_registration_path, class:"underline font-bold m-4" %>
-      <%= link_to "Login", new_user_session_path, class:"underline font-bold m-4"%>
+  </section>
+
+  <section class="about flex items-end mt-32 relative rounded-md" id="about">
+    <img class="about-img absolute rounded-l bottom-0 left-0 z-10" src="../../assets/people.png" alt=""/>
+
+    <div class="about-desc text-gray-200 flex justify-end pr-48 rounded-md drop-shadow-xl shadow-xl ">
+      <div class=" flex flex-col justify-center font-bold text-sm	">
+        <h2 class="about-title text-white text-xl font-bold mb-4 relative">About Us</h2>
+        <p class="mb-6">We are here  to  help you for every you need</p>
+        <ul class="about-list flex flex-col gap-5">
+          <li class="flex gap-4"><img src="../../assets/check.png" alt="check illustration"/> <p class="ml-1">Is to get medical</p></li>
+          <li class="flex gap-4"><img src="../../assets/check.png" alt="check illustration"/> <p class="ml-1">Financial prospective</p></li>
+          <li class="flex gap-4"><img src="../../assets/check.png" alt="check illustration"/> <p class="ml-1">Eliminating Fraud ( Unauthorized person )</p></li>
+        </ul>
+
+        <a href="#" class="flex gap-2 font-normal mt-7 hover:text-white">Learn more <img src="../../assets/Vector.svg"/></a>
+      </div>
     </div>
-  <% end %>
-</div>
-</div>
+  </section>
+
+  <section class="service flex items-center mt-44" id="services">
+    <div class="service-desc text-gray-200 text-sm rounded flex flex-col justify-center pl-16 -mr-20 drop-shadow-xl shadow-xl">
+      <h2 class="text-xl text-white font-bold mb-3">How It Works</h2>
+      <p class="mb-6 text-xl">Here are the steps to get our service</p>
+      <div class="flex">
+        <img class="mt-7" src="../../assets/Illustration.svg" alt="illustration of steps"/>
+        <ul class="flex flex-col gap-4 ">
+          <li class="service-card p-2 rounded-lg bg-slate-700">
+            <h4 class="text-white text-sm">Login or Register</h4>
+            <p class="mt-1">Register & Fill your personal Information and fill correctly</p>
+          </li>
+          <li class=" w-9/12">This is the platform where the people can get access to get treatment more easily</li>
+          <li>Follow the instructions</li>
+        </ul>
+      </div>
+
+      <a href="#" class="flex gap-2 font-normal mt-7 hover:text-white">Learn more <img src="../../assets/Vector.svg"/></a>
+    </div>
+
+    <img class="rounded z-10 drop-shadow-xl" src="../../assets/collaborating.png" alt="Two colleagues collaborating"/>
+  </section>
+
+  <section class="team flex justify-between w-10/12 font-semibold gap-8 mt-52">
+    <div class="flex flex-col text-white w-64 p-2">
+      <h2 class=" text-sky-950 text-2xl mb-3 ml-6">Meet our team</h2>
+      <h3 class="text-2xl mb-8 ml-6">The big family</h3>
+      <p class=" text-black">We find the customer support  we have the team that live online to check the issue that you can find on this site
+        their have 4 years in communication and business administration .</p>
+    </div>
+    <div class="text-center relative text-2xl font-bold">
+      <img src="../../assets/man_team_2.png" alt="team member picture"/>
+      <div class="team-block absolute w-full left-0 grid">
+        <h4 class="text-sky-950 border-t-green-700 border-t-2">Izere valentin</h4>
+        <p class="text-white -mt-7">Data Analyst intern</p>
+
+        <ul class="team-socials flex justify-center self-end text-white mt-5 gap-9">
+          <li><a href="#"><i class="fa-brands social-team fa-facebook-f control"></i></a></li>
+          <li><a href="#"><i class="fa-brands social-team fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa-brands social-team fa-instagram"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="text-center text-2xl font-bold">
+      <img src="../../assets/man_team.png" alt="team member picture"/>
+      <h4 class="text-sky-950 mb-2">Didier Serge Dushime</h4>
+      <p class="text-white">Chief Executive Officer</p>
+    </div>
+    <div class="text-center text-2xl font-bold">
+      <img src="../../assets/woman_team.png" alt="team member picture"/>
+      <h4 class="text-sky-950 mb-2">Christelle Uwihirwe</h4>
+      <p class="text-white">Administrative Assistant</p>
+    </div>
+  </section>
+
+  <section class="contact w-full mt-40" id="contact">
+    <img class="logo mt-12 ml-14 pl-1" src="../../assets/logo.svg">
+
+    <div class="contact-first-block flex text-gray-200 gap-64 font-medium">
+      <div class="block-one flex gap-24 mt-24 ml-72 pt-1">
+        <ul class=" mr-1">
+          <li class="text-black font-bold">Product</li>
+          <li><a href="#">Hospitals</a></li>
+          <li><a href="#">Company</a></li>
+          <li><a href="#">Personal</a></li>
+          <li><a href="#">Organization</a></li>
+        </ul>
+        <ul>
+          <li class="text-black font-bold">Explore</li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="block-two mb-2">
+        <h3 class="text-black">OFFICE LOCATION</h3>
+        <p class="">ABC Company, 123 East, 17th Street, St. louis 10001</p>
+
+        <h3 class="text-black mt-20">News Letter</h3>
+
+        <%= form_with url: "#", method: :post , class: "news-form flex flex-col" do |f|%>
+          <%= f.label :"Enter your email address", class: "font-semibold p-0" %>
+          <%= f.email_field :email,  autocomplete: "email", class: "news-input p-1" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class=" bg-cyan-950 h-px w-10/12 mx-auto mt-28 mb-6"></div>
+
+    <div class="contact-second-block  text-center text-white text-xs">
+      <ul class="team-socials flex justify-center self-end text-xl mt-5 gap-9">
+        <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+        <li><a href="#"><i class="fa-brands fa-facebook-f control"></i></a></li>
+      </ul>
+
+      <p class="mt-9 mb-2"> © 2023 Kanguhealth service All Rights Reserved.</p>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+      <div class="flex justify-center gap-14 mt-8 mb-16 p-8 text-left ">
+        <p class="text-footer mr-1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it t
+          <br><br>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it t
+        </p>
+        <p class="text-footer">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it t
+          <br><br>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it t
+        </p>
+      </div>
+
+      <p class="mb-32">All Rights Reserved</p>
+
+    </div>
+
+  </section>
 </div>
