@@ -82,7 +82,7 @@ class HealthcareRequestDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how healthcare requests are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(healthcare_request)
-  #   "HealthcareRequest ##{healthcare_request.id}"
-  # end
+  def display_resource(healthcare_request)
+    "#{healthcare_request.title}"
+  end
 end
