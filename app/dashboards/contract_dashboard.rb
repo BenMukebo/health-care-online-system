@@ -14,12 +14,13 @@ class ContractDashboard < Administrate::BaseDashboard
     hospital: Field::BelongsToSearch.with_options(class_name: 'Hospital'),
     organization: Field::BelongsToSearch.with_options(class_name: 'Organization'),
     start_date: Field::Date,
-    legal_documents: Field::ActiveStorage,
-    # legal_documents: Field::ActiveStorage.with_options(
-    #   destroy_url: proc do |namespace, resource, attachment|
-    #     [:custom_legal_document_destroy, { attachment_id: attachment.id }]
-    #   end
-    # ),
+    # legal_documents: Field::ActiveStorage,
+    legal_documents: Field::ActiveStorage.with_options(
+      show_display_preview: false,
+      destroy_legal_document: proc do |namespace, resource, legal_document|
+        [:custom_legal_document_destroy, { legal_document_id: legal_document.id }]
+      end
+    ),
     renewal_option: Field::Boolean,
     status: Field::Select.with_options(
       searchable: true,
