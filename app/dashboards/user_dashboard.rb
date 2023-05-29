@@ -19,7 +19,7 @@ class UserDashboard < Administrate::BaseDashboard
     # documents: Field::ActiveStorage,
     documents: Field::ActiveStorage.with_options(
       show_display_preview: false,
-      delete_document: proc do |admin, resource, document| # destroy_document
+      delete_document: proc do |_admin, resource, document| # destroy_document
         [:custom_delete_document, resource, { document_id: document.id }]
       end
     ),

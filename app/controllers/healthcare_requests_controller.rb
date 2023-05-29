@@ -1,5 +1,5 @@
 class HealthcareRequestsController < ApplicationController
-  before_action :set_healthcare_request, only: %i[ show edit update destroy ]
+  before_action :set_healthcare_request, only: %i[show edit update destroy]
 
   # GET /healthcare_requests or /healthcare_requests.json
   def index
@@ -7,8 +7,7 @@ class HealthcareRequestsController < ApplicationController
   end
 
   # GET /healthcare_requests/1 or /healthcare_requests/1.json
-  def show
-  end
+  def show; end
 
   # GET /healthcare_requests/new
   def new
@@ -16,8 +15,7 @@ class HealthcareRequestsController < ApplicationController
   end
 
   # GET /healthcare_requests/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /healthcare_requests or /healthcare_requests.json
   def create
@@ -25,7 +23,10 @@ class HealthcareRequestsController < ApplicationController
 
     respond_to do |format|
       if @healthcare_request.save
-        format.html { redirect_to healthcare_request_url(@healthcare_request), notice: "Healthcare request was successfully created." }
+        format.html do
+          redirect_to healthcare_request_url(@healthcare_request),
+                      notice: 'Healthcare request was successfully created.'
+        end
         format.json { render :show, status: :created, location: @healthcare_request }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,10 @@ class HealthcareRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @healthcare_request.update(healthcare_request_params)
-        format.html { redirect_to healthcare_request_url(@healthcare_request), notice: "Healthcare request was successfully updated." }
+        format.html do
+          redirect_to healthcare_request_url(@healthcare_request),
+                      notice: 'Healthcare request was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @healthcare_request }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +56,21 @@ class HealthcareRequestsController < ApplicationController
     @healthcare_request.destroy
 
     respond_to do |format|
-      format.html { redirect_to healthcare_requests_url, notice: "Healthcare request was successfully destroyed." }
+      format.html { redirect_to healthcare_requests_url, notice: 'Healthcare request was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_healthcare_request
-      @healthcare_request = HealthcareRequest.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def healthcare_request_params
-      params.require(:healthcare_request).permit(:title, :description, :received, :valided, :data, :status, :user_id, :organization_id, :hospital_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_healthcare_request
+    @healthcare_request = HealthcareRequest.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def healthcare_request_params
+    params.require(:healthcare_request).permit(:title, :description, :received, :valided, :data, :status, :user_id,
+                                               :organization_id, :hospital_id)
+  end
 end

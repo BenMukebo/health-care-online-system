@@ -17,7 +17,7 @@ class ContractDashboard < Administrate::BaseDashboard
     # legal_documents: Field::ActiveStorage,
     legal_documents: Field::ActiveStorage.with_options(
       show_display_preview: false,
-      destroy_legal_document: proc do |namespace, resource, legal_document|
+      destroy_legal_document: proc do |_namespace, _resource, legal_document|
         [:custom_legal_document_destroy, { legal_document_id: legal_document.id }]
       end
     ),

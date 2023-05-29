@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class HealthcareRequestDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -13,13 +13,14 @@ class HealthcareRequestDashboard < Administrate::BaseDashboard
     hospital: Field::BelongsTo,
     organization: Field::BelongsTo,
     received: Field::Boolean,
-    rich_text_description: Field::HasOne,
+    rich_text_description: RichTextAreaField,
+    # description: Field::RichText,
     status: Field::Number,
     title: Field::String,
     user: Field::BelongsTo,
     valided: Field::Number,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -55,15 +56,15 @@ class HealthcareRequestDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    title
+    rich_text_description
     data
     hospital
     organization
-    received
-    rich_text_description
-    status
-    title
-    user
     valided
+    received
+    status
+    user
   ].freeze
 
   # COLLECTION_FILTERS
