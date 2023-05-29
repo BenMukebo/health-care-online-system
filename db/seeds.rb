@@ -75,5 +75,4 @@ if Rails.env.development?
       agreement_type: rand(0..2)
     )
   end
-
 end
