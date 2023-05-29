@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :healthcare_requests
   devise_for :users
   authenticated :user do
     root 'dashboard#index', as: :authenticated_root
@@ -18,12 +19,12 @@ Rails.application.routes.draw do
     resources :contracts do
       delete :legal_documents, on: :member, action: :destroy_legal_document
     end
+    resources :healthcare_requests
     
     delete :custom_delete_image, to: 'users#delete_image'
     delete :custom_delete_document, to: 'users#delete_document'
     delete :custom_delete_legal_document, to: 'contracts#delete_legal_document'
     
-    resources :healthcare_requests
     root to: "roles#index"
   end
   
@@ -34,9 +35,11 @@ Rails.application.routes.draw do
 
   namespace :dashboard do
     resources :organizations, only: [:index, :show, :update] do
+      resources :healthcare_requests
     end
     resources :hospitals do
       # member
+      resources :healthcare_requests
     end
     root to: "organizations#index"
   end
