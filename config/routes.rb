@@ -10,15 +10,20 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users do
       delete :image, on: :member, action: :destroy_image
+      delete :documents, on: :member, action: :destroy_document
     end
     resources :roles
     resources :organizations
     resources :hospitals
     resources :contracts do
-      delete :legal_documents, on: :member, action: :destroy_document
+      delete :legal_documents, on: :member, action: :destroy_legal_document
     end
-    # delete :custom_user_image_destroy, to: 'users#destroy_image'
-    # delete :custom_legal_document_destroy, to: 'users#destroy_legal_document'
+    
+    delete :custom_delete_image, to: 'users#delete_image'
+    delete :custom_delete_document, to: 'users#delete_document'
+    delete :custom_delete_legal_document, to: 'contracts#delete_legal_document'
+    
+    resources :healthcare_requests
     root to: "roles#index"
   end
   
@@ -28,7 +33,8 @@ Rails.application.routes.draw do
   # get '/hospitals/new', to: 'hospitals#new'
 
   namespace :dashboard do
-    resources :organizations, only: [:index, :show, :update]
+    resources :organizations, only: [:index, :show, :update] do
+    end
     resources :hospitals do
       # member
     end
