@@ -21,6 +21,7 @@
 @import "components/navigation";
 @import "components/pagination";
 @import "components/search";
+@import "utilities/text-color";
 
 // Rest of file
 
@@ -59,3 +60,5 @@
     width: 80%;
   }
 }
+
+// @import "flatpickr/dist/flatpickr.min";
