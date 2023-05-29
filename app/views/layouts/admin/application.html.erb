@@ -22,6 +22,12 @@ By default, it renders:
     <%= content_for(:title) %> - <%= application_title %>
   </title>
   <%= render "stylesheet" %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+
+  <%#<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%#<%= javascript_pack_tag 'administrate', 'data-turbolinks-track': 'reload' %>
+
   <%= render "stylesheet" %>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag if defined?(csp_meta_tag) %>
