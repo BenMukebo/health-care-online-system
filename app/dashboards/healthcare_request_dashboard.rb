@@ -13,8 +13,8 @@ class HealthcareRequestDashboard < Administrate::BaseDashboard
     hospital: Field::BelongsTo,
     organization: Field::BelongsTo,
     received: Field::Boolean,
-    rich_text_description: RichTextAreaField,
-    # description: Field::RichText,
+    # rich_text_description: RichTextAreaField, # or
+    description: RichTextAreaField,
     status: Field::Number,
     title: Field::String,
     user: Field::BelongsTo,
@@ -43,7 +43,7 @@ class HealthcareRequestDashboard < Administrate::BaseDashboard
     hospital
     organization
     received
-    rich_text_description
+    description
     status
     title
     user
@@ -57,7 +57,7 @@ class HealthcareRequestDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     title
-    rich_text_description
+    description
     data
     hospital
     organization
