@@ -8,16 +8,18 @@ class HospitalDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    users: Field::HasMany,
+    contracts: Field::HasMany,
     id: Field::Number,
-    address: Field::String.with_options(searchable: false),
-    data: Field::String.with_options(searchable: false),
+    address: Field::String.with_options(searchable: true),
+    data: Field::Text.with_options(searchable: false),
     name: Field::String,
-    status: Field::Select.with_options(
-      searchable: false,
-      collection: lambda { |field|
-                    field.resource.class.send(field.attribute.to_s.pluralize).keys
-                  }
-    ),
+    email: Field::Email,
+    logo: Field::ActiveStorage,
+    phone_number: Field::String,
+    register_number: Field::String,
+    terms_of_service: Field::Text,
+    status: Field::Enum.with_options(searchable: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -29,9 +31,11 @@ class HospitalDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    logo
     name
-    data
-    address
+    email
+    phone_number
+    status
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -39,11 +43,18 @@ class HospitalDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     name
-    address
+    logo
     data
+    address
+    terms_of_service
+    register_number
+    email
+    phone_number
     status
     created_at
     updated_at
+    contracts
+    users
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -51,9 +62,14 @@ class HospitalDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     name
+    logo
     data
     address
+    terms_of_service
     status
+    register_number
+    email
+    phone_number
   ].freeze
 
   # COLLECTION_FILTERS

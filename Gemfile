@@ -14,19 +14,32 @@ gem 'sprockets-rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
-# Use the Puma web server [https://github.com/puma/puma]
+# Use the Puma web server [httpsf://github.com/puma/puma]
 gem 'puma', '~> 5.0'
+
+gem 'pry'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
 
-gem 'administrate', '~> 0.18.0'
-# gem "administrate", github: "n-studio/administrate", branch: "compile-assets"
+gem 'administrate'
+# Extending Administrate with custom fields
+gem 'administrate-field-active_storage' # , "0.1.8"
+gem 'administrate-field-belongs_to_search'
+gem 'administrate-field-enum'
 
-gem 'devise'
+# To preview  Microsoft Office files as pictures you need to install activestorage-office-previewer by basecamp
+gem 'activestorage-office-previewer'
 
 # Set up Bullet
 gem 'bullet', group: :development
+
+gem 'devise'
+
+gem 'font-awesome-sass' # , '~> 5.15.4'
+
+gem 'faker'
+# gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails'
@@ -56,18 +69,27 @@ gem 'bootsnap', require: false
 
 # Use Sass to process CSS
 # gem "sassc-rails"
-gem 'tailwindcss-rails'
+
+gem 'tailwindcss-rails' # , "~> 2.0"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem 'image_processing', '~> 1.2' # mini_magick t
+
+# To preview pdf files you need to install mupdf or Poppler
+gem 'poppler'
+
+# To preview video files you need to install ffmpeg
+# gem install streamio-ffmpeg
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  # gem 'pry-rails'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'hotwire-livereload'
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]

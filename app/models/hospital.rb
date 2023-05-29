@@ -1,10 +1,11 @@
 class Hospital < ApplicationRecord
-  # has_many :users
+  include Validatable
+  has_many :users
+  has_many :contracts, dependent: :destroy
+  has_many :organizations, through: :contracts # , dependent: :destroy
 
-  enum status: { inactive: 0, active: 1 }.freeze
+  has_one_attached :logo
+  has_rich_text :description
 
-  validates :name, presence: true
-  validates_presence_of :status
-  # validates :data, presence: true, length: { maximum: 9 }
-  # validates :address, presence: true, length: { maximum: 4 }
+  enum status: { inactive: 0, active: 1, under_investigation: 2 }.freeze
 end

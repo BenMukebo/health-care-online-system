@@ -14,6 +14,199 @@
  *= require_self
  */
 
-/* @tailwind base;
+/* @import "font-awesome-sprockets";
+@import "font-awesome"; */
+
+/* :root {
+  --size-border: 2px solid var(--text-color);
+  --box-border: 2px solid var(--shadow-color);
+  --box-hover: 1px solid var(--primary-color);
+  --bacground-color: #e5e5e5;
+  --primary-color: #298cfc33;
+  --btn-color: #5fb523;
+  --secondary-color: #02428b;
+  --text-color: #434b54;
+  --bg-color: #0372ef42;
+  --on-secondary: #fff;
+  --shadow-color: #f1f1f2;
+} */
+
+/* * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+} */
+
+/* *,
+*::before,
+*::after {
+  box-sizing: border-box;
+} */
+
+/* body {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bacground-color);
+} */
+
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  overflow-x: hidden !important;
+}
+
+img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.home-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #8fb1d4;
+}
+
+div > h2 {
+  font-family: "DM Sans", sans-serif;
+  gap: 2rem;
+}
+
+.navigation {
+  position: relative;
+}
+
+.navigation a {
+  position: relative;
+  transition: 0.3s;
+}
+
+.navigation a:hover {
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.248);
+}
+
+.effect {
+  position: absolute;
+  left: 0;
+  bottom: -0.95rem;
+  transition: 0.5s ease-in-out;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background-color: #000;
+  z-index: 99;
+  display: none;
+  user-select: none;
+}
+
+.effect:hover {
+  display: none;
+}
+
+.navigation li:hover ~ .effect {
+  display: block;
+}
+
+.navigation li:nth-child(1):hover ~ .effect {
+  left: 7%;
+}
+
+.navigation li:nth-child(2):hover ~ .effect {
+  left: 28%;
+}
+
+.navigation li:nth-child(3):hover ~ .effect {
+  left: 56%;
+}
+
+.navigation li:nth-child(4):hover ~ .effect {
+  left: 84.5%;
+}
+
+.about-desc {
+  background-color: #264c79;
+  height: 21.5625rem;
+  width: 71.25rem;
+}
+
+.about-title::after {
+  content: "";
+  position: absolute;
+  bottom: -0.1rem;
+  left: 0;
+  width: 4rem;
+  height: 0.15rem;
+  background-color: white;
+  z-index: 9;
+  border-radius: 3rem;
+}
+
+.about-img {
+  backdrop-filter: blur(15px);
+}
+
+.service-desc {
+  background-color: #264c79;
+  height: 21.5625rem;
+  width: 40.9375rem;
+}
+
+.service-card {
+  font-size: 0.7rem;
+  width: 11rem;
+}
+
+.team-block {
+  background-color: #8fb1d4;
+  top: 7.625rem;
+  height: calc(100% - 7.625rem);
+}
+
+.social-team {
+  font-size: 2rem;
+  color: #6a9a69;
+}
+
+.contact {
+  background-color: #6a829d;
+}
+
+.block-one a:hover {
+  color: white;
+}
+
+.news-input {
+  outline: none;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+input:focus {
+  outline: none !important;
+}
+
+.contact-second-block {
+  line-height: 18px;
+}
+
+.text-footer {
+  width: 25rem;
+}

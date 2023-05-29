@@ -9,15 +9,19 @@ class UserDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     role: Field::BelongsTo,
+    hospital: Field::BelongsToSearch.with_options(class_name: 'Hospital'),
+    organization: Field::BelongsToSearch.with_options(class_name: 'Organization'),
     id: Field::Number,
     email: Field::Email,
-    password: Field::Password,
     first_name: Field::String,
     familly_name: Field::String,
     matricule_number: Field::String,
-    picture: Field::Url,
+    # documents: Field::ActiveStorage,
+    image: Field::ActiveStorage,
+    # picture: Field::Url,
+    password: Field::Password,
     phone: Field::String,
-    bio: Field::String,
+    bio: Field::Text,
     middle_name: Field::String,
     marital_status: Field::Select.with_options(
       searchable: false,
@@ -28,10 +32,9 @@ class UserDashboard < Administrate::BaseDashboard
     gender: Field::Select.with_options(
       collection: User.genders.keys
     ),
-    # data: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
-    # address: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
     address: Field::String.with_options(searchable: false),
     data: Field::String.with_options(searchable: false),
+    # data: Field::JSONB.with_options(searchable: false, html_attributes: { rows: 3 }),
     phyisical_appearence: Field::String.with_options(searchable: false),
     status: Field::Select.with_options(
       searchable: false,
@@ -39,6 +42,7 @@ class UserDashboard < Administrate::BaseDashboard
                     field.resource.class.send(field.attribute.to_s.pluralize).keys
                   }
     ),
+    agreed_to_terms: Field::Boolean,
     encrypted_password: Field::String,
     remember_created_at: Field::DateTime,
     reset_password_sent_at: Field::DateTime,
@@ -54,11 +58,10 @@ class UserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
+    image
     first_name
-    familly_name
     email
     marital_status
-    address
     role
     status
   ].freeze
@@ -67,6 +70,7 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    image
     email
     phone
     first_name
@@ -75,7 +79,10 @@ class UserDashboard < Administrate::BaseDashboard
     gender
     encrypted_password
     matricule_number
+    hospital
+    organization
     role
+    bio
     data
     address
     phyisical_appearence
@@ -91,6 +98,7 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    image
     first_name
     familly_name
     email
@@ -98,9 +106,13 @@ class UserDashboard < Administrate::BaseDashboard
     phone
     marital_status
     gender
+    bio
     data
     address
     status
+    agreed_to_terms
+    hospital
+    organization
     role
   ].freeze
   # encrypted_password

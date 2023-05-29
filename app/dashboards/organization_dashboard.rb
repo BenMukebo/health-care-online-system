@@ -8,18 +8,18 @@ class OrganizationDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    users: Field::HasMany,
+    contracts: Field::HasMany,
     id: Field::Number,
-    data: Field::String.with_options(searchable: false),
-    location: Field::String.with_options(searchable: false),
-    logo: Field::String,
+    data: Field::Text.with_options(searchable: false),
+    location: Field::String.with_options(searchable: true),
+    logo: Field::ActiveStorage,
     name: Field::String,
+    email: Field::Email,
+    phone_number: Field::String,
     register_number: Field::String,
-    status: Field::Select.with_options(
-      searchable: false,
-      collection: lambda { |field|
-                    field.resource.class.send(field.attribute.to_s.pluralize).keys
-                  }
-    ),
+    terms_of_service: Field::Text,
+    status: Field::Enum.with_options(searchable: true),
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -31,10 +31,11 @@ class OrganizationDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    name
-    data
-    location
     logo
+    name
+    email
+    phone_number
+    status
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -42,13 +43,18 @@ class OrganizationDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     name
+    logo
     data
     location
-    logo
+    terms_of_service
     register_number
+    email
+    phone_number
     status
     created_at
     updated_at
+    contracts
+    users
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -56,11 +62,14 @@ class OrganizationDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     name
+    logo
     data
     location
-    logo
-    register_number
+    terms_of_service
     status
+    register_number
+    email
+    phone_number
   ].freeze
 
   # COLLECTION_FILTERS
