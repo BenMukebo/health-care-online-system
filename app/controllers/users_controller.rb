@@ -25,7 +25,7 @@ end
 
 # Only allow a list of trusted parameters through.
 def user_params
-  params.require(:user).permit(:password, :first_name, :familly_name, :middle_name, :phone,
+  params.require(:user).permit(:password, :first_name, :family_name, :middle_name, :phone,
                                :birth_date, :sex, :image, :identity_number, :bio, :marital_status,
                                :gender, { data: %i[website terms_of_service] },
                                { address: %i[city state country zip_code] },
