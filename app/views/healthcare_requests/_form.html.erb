@@ -51,19 +51,21 @@
 
   <div class="my-5">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= collection_select( :healthcare_request, :user_id, User.all, :id, :first_name, { multiple: false }, {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"} ) %>
   </div>
 
   <div class="my-5">
     <%= form.label :organization_id %>
-    <%= form.text_field :organization_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= collection_select( :healthcare_request, :organization_id, Organization.all, :id, :name, {prompt: true}, {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"}) %>
   </div>
 
   <div class="my-5">
     <%= form.label :hospital_id %>
-    <%= form.text_field :hospital_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= collection_select( :healthcare_request, :hospital_id, Hospital.all, :id, :name, {prompt: true}, {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"}) %>
+    <%#<%= collection_select( :healthcare_request, :hospital_id, Hospital.all, :id, :name, { multiple: false }, {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"} ) %>
+    <%#<%= form.collection_select :hospital_id, Hospital.all, :id, :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-
+    
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
