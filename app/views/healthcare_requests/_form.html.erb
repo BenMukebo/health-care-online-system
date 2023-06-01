@@ -21,24 +21,32 @@
     <%= form.rich_text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :received %>
+  <div class="my-5 flex items-center flex-row-reverse gap-x-4 ">
+    <%= form.label :received, class: "flex items-center" %>
     <%= form.check_box :received, class: "block mt-2 h-5 w-5" %>
   </div>
 
+  <%
+=begin 
+%>
   <div class="my-5">
     <%= form.label :valided %>
     <%= form.number_field :valided, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
+  </div> %>
+  %>
+
+ <%
+=end
+%>
 
   <div class="my-5">
     <%= form.label :data %>
     <%= form.text_field :data, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :status %>
-    <%= form.number_field :status, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  <div class="my-5 flex items-center">
+    <%= form.label :request_status, style: "" %>:&nbsp;
+    <%= form.select :status, HealthcareRequest.statuses.keys, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">

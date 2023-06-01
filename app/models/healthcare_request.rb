@@ -5,8 +5,11 @@ class HealthcareRequest < ApplicationRecord
 
   has_rich_text :description
 
-  validates :tile, length: { maximum: 60 }, presence: true
-  enum status: { pending: 0, rejected: 1, approved: 2 }.freeze
+  # validates :title, length: { maximum: 60 }, presence: true
+  enum status: {
+    pending: 0, in_review: 1, rejected: 2, approved: 3
+  }.freeze, _default: 'pending'
 
-  validates_presence_of :status
+  validates :status, presence: true, inclusion: { in: statuses }, uniqueness: { case_sensitive: false }
+  # validates_presence_of :status
 end
