@@ -8,8 +8,8 @@ module Admin
     # For illustrative purposes only.
     #
     # **SECURITY NOTICE**: first verify whether current user is authorized to perform the action.
-    def destroy_document
-      legal_document = requested_resource.legal_documents.find(params[:attachment_id])
+    def destroy_legal_document
+      legal_document = requested_resource.legal_documents.find(params[:legal_document_id])
       legal_document.purge
       redirect_back(fallback_location: requested_resource)
     end

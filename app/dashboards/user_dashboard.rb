@@ -17,6 +17,14 @@ class UserDashboard < Administrate::BaseDashboard
     familly_name: Field::String,
     matricule_number: Field::String,
     # documents: Field::ActiveStorage,
+    documents: Field::ActiveStorage.with_options(
+      show_display_preview: false,
+      delete_document: proc do |_admin, resource, document| # destroy_document
+        [:custom_delete_document, resource, { document_id: document.id }]
+      end
+    ),
+    # documents: Field::ActiveStorage.with_options(index_display_preview: false),
+
     image: Field::ActiveStorage,
     # picture: Field::Url,
     password: Field::Password,
@@ -87,6 +95,7 @@ class UserDashboard < Administrate::BaseDashboard
     address
     phyisical_appearence
     status
+    documents
     created_at
     updated_at
   ].freeze
@@ -114,6 +123,7 @@ class UserDashboard < Administrate::BaseDashboard
     hospital
     organization
     role
+    documents
   ].freeze
   # encrypted_password
   # reset_password_token
@@ -129,6 +139,11 @@ class UserDashboard < Administrate::BaseDashboard
   #     open: ->(resources) { resources.where(open: true) }
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
+
+  # permitted for has_many_attached
+  def permitted_attributes
+    super + [documents: []]
+  end
 
   # Overwrite this method to customize how users are displayed
   # across all pages of the admin dashboard.

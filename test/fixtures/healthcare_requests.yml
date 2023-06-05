@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  received: false
+  valided: 1
+  data: 
+  status: 1
+  user: one
+  organization: one
+  hospital: one
+
+two:
+  title: MyString
+  received: false
+  valided: 1
+  data: 
+  status: 1
+  user: two
+  organization: two
+  hospital: two

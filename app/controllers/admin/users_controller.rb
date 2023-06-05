@@ -1,9 +1,9 @@
 module Admin
   class UsersController < Admin::ApplicationController
     # Overwrite any of the RESTful controller actions to implement custom behavior
-    # def scoped_resource
-    #   resource_class.with_attached_documents
-    # end
+    def scoped_resource
+      resource_class.with_attached_documents
+    end
 
     # For illustrative purposes only.
     #
@@ -11,6 +11,12 @@ module Admin
     def destroy_image
       image = requested_resource.image
       image.purge
+      redirect_back(fallback_location: requested_resource)
+    end
+
+    def destroy_document
+      document = requested_resource.documents.find(params[:document_id])
+      document.purge
       redirect_back(fallback_location: requested_resource)
     end
 

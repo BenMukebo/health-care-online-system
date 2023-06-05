@@ -3,6 +3,7 @@ class Organization < ApplicationRecord
   has_many :users
   has_many :contracts, dependent: :destroy
   has_many :hospitals, through: :contracts # , dependent: :destroy
+  has_many :healthcare_requests
 
   has_one_attached :logo
   has_rich_text :description

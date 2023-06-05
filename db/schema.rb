@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_26_165500) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_28_115453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,6 +70,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_165500) do
     t.index ["terms_of_agreement"], name: "index_contracts_on_terms_of_agreement", using: :gin
   end
 
+  create_table "healthcare_requests", force: :cascade do |t|
+    t.string "title"
+    t.boolean "received", default: false
+    t.integer "valided"
+    t.jsonb "data"
+    t.integer "status"
+    t.bigint "user_id", null: false
+    t.bigint "organization_id", null: false
+    t.bigint "hospital_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["data"], name: "index_healthcare_requests_on_data", using: :gin
+    t.index ["hospital_id"], name: "index_healthcare_requests_on_hospital_id"
+    t.index ["organization_id"], name: "index_healthcare_requests_on_organization_id"
+    t.index ["user_id"], name: "index_healthcare_requests_on_user_id"
+  end
+
   create_table "hospitals", force: :cascade do |t|
     t.string "name", null: false
     t.string "email"
@@ -115,19 +132,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_165500) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "email", limit: 128, default: "", null: false
+    t.string "encrypted_password", limit: 128, default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "first_name"
-    t.string "familly_name"
+    t.string "family_name"
     t.string "middle_name"
     t.string "matricule_number", limit: 8
     t.string "phone"
     t.text "bio"
+    t.date "birth_date"
     t.integer "marital_status"
     t.string "gender"
     t.jsonb "data", default: "{}", null: false
@@ -153,6 +171,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_26_165500) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "contracts", "hospitals"
   add_foreign_key "contracts", "organizations"
+  add_foreign_key "healthcare_requests", "hospitals"
+  add_foreign_key "healthcare_requests", "organizations"
+  add_foreign_key "healthcare_requests", "users"
   add_foreign_key "users", "hospitals"
   add_foreign_key "users", "organizations"
   add_foreign_key "users", "roles"

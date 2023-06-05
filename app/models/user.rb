@@ -7,9 +7,10 @@ class User < ApplicationRecord
   belongs_to :role
   belongs_to :organization, optional: true
   belongs_to :hospital, optional: true
+  has_many :healthcare_requests # , dependent: :destroy
 
   has_one_attached :image
-  # has_many_attached :documents
+  has_many_attached :documents
   # has_rich_text :biography
 
   after_initialize :set_default_role, if: :new_record?
@@ -21,12 +22,13 @@ class User < ApplicationRecord
   enum gender: { Male: 'M', Female: 'F' }.freeze
   enum status: { inactive: 0, active: 1, rest: 2 }.freeze, _default: 0
 
+  validates :email, uniqueness: { case_sensitive: false },
+                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :first_name, :familly_name, presence: true, length: { maximum: 11 }
-  validates :phone, uniqueness: true, length: { within: 10..16 }, allow_blank: true
+  # validates :phone, uniqueness: true, length: { within: 8..16 }
   validates :agreed_to_terms, presence: true, inclusion: { in: [true, false] }
-
+  # validates :address, presence: true, length: { maximum: 5 }
   # validates :data, presence: true, length: { maximum: 9 }
-  # validates :address, presence: true, length: { maximum: 4 }
 
   def admin?
     role.name == 'admin'
@@ -42,9 +44,9 @@ class User < ApplicationRecord
     self.role = Role.find_or_create_by(name: 'user') if role.nil?
   end
 
-  # def update_role(role_name)
-  #   self.role = Role.find_or_create_by(name: role_name).save!
-  # end
+  def update_role(role_name)
+    self.role = Role.find_or_create_by(name: role_name).save!
+  end
 
   def generate_matricule_number
     self.matricule_number = SecureRandom.random_number(10**8).to_s.rjust(8, '0')
