@@ -1,0 +1,13 @@
+<div class="flex justify-between gap-2 text-left p-3">
+    <img class="1/4 ml-5" src="../../../assets/contract_icon" alt="contract icon"/>
+    <p class="w-1/4 -ml-8"><%=contract.organization.try :name%></p>
+    <p class="w-1/4"><%=contract.start_date %></p>
+    <%if contract.status === "inactive" || contract.status === "suspended"%>
+        <p class="w-1/4 text-red-600"><%= contract.status.capitalize()%></p>
+    <%elsif  contract.status === "active"%>
+        <p class="w-1/4 text-blue-700"><%= contract.status.capitalize()%></p>
+    <%else%>
+        <p class="w-1/4 text-green-500"><%= contract.status.capitalize()%></p>
+    <%end%>
+</div>
+<hr class="h-[1px] bg-blue-400">

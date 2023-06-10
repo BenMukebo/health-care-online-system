@@ -9,19 +9,16 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag 'wind', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= hotwire_livereload_tags if Rails.env.development? %>
 
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap", media:"all", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     
     <script src="https://kit.fontawesome.com/29d7bf5b00.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/9ef5f4f831.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
-    />
 
   </head>
 
@@ -35,6 +32,7 @@
     <% else %>
       <%#<%= render "dashboard/shared/aside_menu" %>
       <main class="container w-full max-w-full mx-auto">
+        <%=turbo_frame_tag "modal"%>
         <%= yield %>
       </main>
     <% end %>

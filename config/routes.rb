@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     resources :hospitals do
       # member
     end
+    resources :contracts do
+      delete :legal_documents, on: :member, action: :destroy_document
+    end
     root to: "organizations#index"
   end
 end

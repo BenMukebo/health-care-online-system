@@ -1,5 +1,5 @@
 <nav
-class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-lightBlue-500 bg-[#90badd] flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6"
+class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-lightBlue-500 bg-[#90badd] flex flex-wrap items-center justify-between relative md:w-64 z-10  py-4 px-6"
 >
 <div
   class="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto"
@@ -127,9 +127,14 @@ class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:fl
     </form>
     <!-- Left side bar 160- 277 -->
     <ul class="md:flex-col md:min-w-full flex flex-col list-none">
-      <%#<li class="items-center">
+      <li class="items-center">
        <%= link_to dashboard_organizations_path, class:"text-pink-500 hover:text-pink-600 text-md uppercase py-3 font-bold block" do %>
-        <%#<i class="fa-sharp fa-solid fa-building opacity-75 mr-4 text-2xl"></i> Organization
+        <i class="fa-sharp fa-solid fa-building opacity-75 mr-4 text-2xl"></i>Home
+        <%end%>
+      </li>
+      <li class="items-center">
+        <%= link_to dashboard_contracts_path, class:"text-blueGray-900 hover:text-blueGray-700 text-sm md:text-base py-3 font-bold block" do %>
+          <i class="fa-solid fa-file-pen text-blueGray-600 mr-4 text-2xl"></i>Contracts
         <%end%>
       </li>
       </li>
@@ -141,11 +146,6 @@ class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:fl
       <li class="items-center">
         <%= link_to home_path, class:"text-blueGray-900 hover:text-blueGray-700 text-sm md:text-base py-3 font-bold block" do %>
           <i class="fa-solid fa-users text-blueGray-600 mr-4 text-2xl"></i><span>Employee </span>
-        <%end%>
-      </li>
-      <li class="items-center">
-        <%= link_to edit_user_registration_path, class:"text-blueGray-900 hover:text-blueGray-700 text-sm md:text-base py-3 font-bold block" do %>
-          <i class="fas fa-user-circle text-blueGray-600 mr-4 text-2xl"></i> Profile Page
         <%end%>
       </li>
       <li class="items-center">

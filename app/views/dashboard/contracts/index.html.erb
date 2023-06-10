@@ -1,0 +1,49 @@
+<% provide(:title, "Contracts") %>
+
+<%= render "dashboard/shared/aside_menu" %>
+
+<section class="text-blueGray-700 antialiased dashboard-section dashboard">
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+
+  <div class="relative md:ml-64 bg-blueGray-50 md:mw-[100% - 16rem] bg-[#b5c2d1] min-h-screen ">
+    <%= render "dashboard/shared/header" %>
+
+    <div class=" md:pt-32 pt-12 text-black">
+      <div class="flex flex-wrap justify-between px-16">
+        <div class="text-lg shadow-md shadow-[#676e75] font-bold bg-white text-black lg:px-10 md:w-80 h-28 pb-2 flex flex-col items-center justify-center rounded w-fit">
+          <p class=" text-4xl font-semibold"><%= @contracts.count%></p>
+          Contracts
+        </div>
+
+        <div class="flex flex-col w-72 gap-4 text-white">
+          <%=link_to new_dashboard_contract_path, data: {turbo_frame: 'modal'}, class: 'custom-shadow rounded-md  py-2 bg-[#264c79] px-4 w-full flex justify-between' do %>
+            Create contract <img src="../../../assets/circle.svg"/>
+          <%end%>
+          <%=link_to dashboard_contracts_path, class: 'custom-shadow rounded-md py-2 px-4 bg-[#264c79] w-full flex justify-between' do%>
+            Manage contract <img src="../../../assets/pen_paper.svg"/>
+          <%end%>
+        </div>
+      </div>
+
+      <div class="mt-7 px-16 flex gap-3 items-center font-semibold text-[#264c79]">
+        <h3 class="font-bold text-lg text-black">Contract status</h3>
+        <div class="flex flex-wrap gap-2 ">
+          <select name="name" class="w-24 p-2 custom-shadow border-none rounded-md !cursor-pointer">
+            <option>Daniel</option>
+          </select>
+
+          <select name="region" class="w-24 p-2 custom-shadow border-none rounded-md !cursor-pointer">
+            <option>Kigali</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="contracts-list rounded-lg w-11/12 mt-7 ml-16 bg-white h-[28rem] overflow-x-hidden overflow-y-scroll">
+        <%=render partial:"contract", collection: @contracts%>
+      </div>
+    </div>
+
+    <%= render "dashboard/shared/footer"%>
+  </div>
+ 
+</section>
